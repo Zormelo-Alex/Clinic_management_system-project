@@ -1,4 +1,10 @@
-.flex{
+.mb{
+    margin-bottom: 1rem;
+}
+.mbs{
+    margin-bottom: .5rem;
+}
+.flex_top{
     display: flex;
     height: 100vh;
 }
@@ -82,3 +88,103 @@
     width: 80%;
     background-color: white;
 }
+.main .add_staff{
+    padding: 15px 30px;
+}
+.main .add_staff .title{
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(37, 37, 37);
+    margin-bottom: 1.5rem;
+}
+.main .add_staff .form{
+    padding: 0;
+}
+.main .add_staff .form input{
+    height: 30px;
+    width: 300px;
+    padding: 5px 7px;
+    border: 1px solid rgb(163, 162, 162);
+    border-radius: 3px;
+    font-size: .9rem;
+    transition: .1s ease-in;
+}
+.main .add_staff .form input:focus{
+    outline: none;
+    border: 2px solid rgb(104, 101, 101);
+}
+.main .add_staff .form input[type ="radio"]{
+    height: initial;
+    width: initial;
+}
+.main .add_staff .form .name{
+    background-color: rgb(243, 235, 235);
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 7px;
+}
+.main .add_staff .form .gen{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(243, 235, 235);
+    border-radius: 7px;
+    padding: 15px 50px;
+}
+.main .add_staff .form .gen .gender{
+    display: flex;
+    flex-direction: column;
+}
+.main .add_staff .form .gen .role select{
+    width: 400px;
+    height: 30px;
+    padding: 3px 7px;
+    font-size: .9rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.main .add_staff .form .gen .role select:focus{
+    outline: none;
+    border: 2px solid rgb(104, 101, 101);
+}
+.main .add_staff .form .others{
+    background-color: rgb(243, 235, 235);
+    padding: 15px 50px;
+    border-radius: 7px;
+}
+.main .add_staff .form .others .flex{
+    display: flex;
+    justify-content: space-between;
+}
+.main .add_staff .form .others .flex .one{
+    display: flex;
+    flex-direction: column;
+}
+.main .add_staff .form .others .flex .two{
+    display: flex;
+    flex-direction: column;
+}
+.main .add_staff .form .others .btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.main .add_staff .form .others .btn input{
+    height: 35px;
+    width: 170px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .5s ease-in;
+    text-transform: capitalize;
+    background-image: linear-gradient(105deg, rgb(83, 235, 83), white);
+}
+.main .add_staff .form .others .btn input:hover{
+    background-color: whitesmoke;
+    background-image: none;
+}
+
+
