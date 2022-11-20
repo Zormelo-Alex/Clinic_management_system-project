@@ -1,0 +1,83 @@
+*{
+    padding: 0; margin: 0;box-sizing: border-box;
+}
+.container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+}
+.container .form{
+    height: 50%;
+    width: 450px;
+    border-radius: 15px;
+    padding: 15px 50px;
+    box-shadow: 0px 0px 7px 0px gray;
+}
+.container .form form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container .form .head h4{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.container .form input{
+    width: 100%;
+    height: 50px;
+    border-radius: 7px;
+    border: 1px solid gray;
+    padding: 5px 15px;
+    margin: 10px;
+    font-size: 1rem;
+    transition: .3s ease;
+}
+.container .form input:focus{
+    outline: 1px solid rgb(83, 235, 83);
+    border: none;
+    box-shadow: 0px 0px 3px 0px gray;
+}
+.container .form input:first-child{
+    margin-top: 25px;
+}
+.container .form form .btn{
+    height: 35px;
+    width: 170px;
+    color: rgb(51, 51, 51);
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .5s ease-in;
+    background-image: linear-gradient(105deg, rgb(83, 235, 83), white);
+}
+.container .form form .btn:hover{
+    background-color: whitesmoke;
+    background-image: none;
+    font-size: 1.01rem;
+}
+.container .form .fp{
+    display: flex;
+    justify-content: center;
+}
+.container .form .fp a{
+    text-decoration: none;
+    height: 35px;
+    color: rgb(83, 80, 80);
+    width: 170px;
+    padding: 7px 20px;
+    border-radius: 25px;
+    font-weight: bolder;
+    text-transform: capitalize;
+    font-size: 1rem;
+    transition: .3s ease-in;
+    border: 1px solid rgb(83, 235, 83);
+}
+.container .form .fp a:hover{
+    color: black;
+}

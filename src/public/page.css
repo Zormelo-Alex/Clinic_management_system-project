@@ -1,0 +1,84 @@
+.flex{
+    display: flex;
+    height: 100vh;
+}
+.nav{
+    width: 20%;
+    background-color: rgb(221, 216, 216);
+}
+.nav .top{
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.nav .top img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 7px 0px rgb(58, 58, 58);
+}
+.nav .top .title{
+    font-size: 1.2rem;
+    color: rgb(58, 58, 58);
+}
+.nav .top .name{
+    font-size: 1rem;
+}
+.nav .bottom ul li{
+    list-style: none;
+    margin: 10px 0px;
+    padding: 3px 15px;
+    transition: .2s ease-in-out;
+    width: 80%;
+    border-radius: 0px 15px 15px 0px;
+}
+.nav .bottom ul .sm{
+    color: black;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 15px;
+    width: 100%;
+}
+.nav .bottom ul .sm:hover{
+    background-color: initial;
+    width: initial;
+}
+.nav .bottom ul li a{
+    text-decoration: none;
+    color: rgb(37, 37, 37);
+    transition: .2s ease-in-out;
+}
+.nav .bottom ul li:hover{
+    background-color: rgb(37, 37, 37);
+}
+.nav .bottom ul li:hover a{
+    color: white;
+}
+.nav .bottom .log{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.nav .bottom .lo{
+    background-color: green;
+    padding: 9px 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    transition: .2s ease;
+}
+.nav .bottom .lo:hover{
+    font-weight: bold;
+    color: green;
+    background-color: transparent;
+    box-shadow: 0px 0px 5px 0px rgb(37, 37, 37);
+}
+.main{
+    width: 80%;
+    background-color: white;
+}

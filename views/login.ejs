@@ -1,0 +1,19 @@
+<%- include("./partials/header") %> 
+    <div class="container">
+        <div class="form">
+            <div class="head">
+                <h4>Welcome to CMS</h4>
+                <hr>
+            </div>
+            <form action="/login" method="post">
+                <input type="text" placeholder="Username or ID" name="username">
+                <input type="password" placeholder="Password" name="password">
+                <input class="btn" type="submit" value="Next">
+            </form>
+            <div class="fp">
+                <a href="">forgot password?</a>
+            </div>
+        </div>
+    </div>
+
+    <%- include("./partials/footer") %> 
