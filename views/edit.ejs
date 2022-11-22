@@ -9,12 +9,12 @@
             <div class="bottom">
                 <ul>
                     <li class="sm">Staff Management</li>
-                    <li class="selected"><a href="/addStaff">Add Staff</a></li>
+                    <li><a href="/addStaff">Add Staff</a></li>
                     <li><a href="/searchStaff">Search Staff</a></li>
                     <li><a href="/manageSchedule">Manage Schedule</a></li>
                     <li class="sm">Patient Management</li>
                     <li><a href="/searchPatient">Search Patient</a></li>
-                    <li><a href="/editInfo">Edit info</a></li>
+                    <li class="selected"><a href="/editInfo">Edit info</a></li>
                 </ul>
                 <div class="log">
                     <a class="lo" href="/logOut">LogOut</a>
@@ -24,7 +24,7 @@
         <div class="main">
             <div class="add_staff">
                 <h2 class="title">
-                    Add New Staff
+                    Edit info
                 </h2>
                 <div class="form">
                     <form action="">
@@ -49,10 +49,7 @@
                             <div class="role">
                                 <label for="">Select role</label>
                                 <select name="role" id="" required>
-                                    <option value="nurse">Nurse</option>
-                                    <option value="pharmacist">Pharmacist</option>
-                                    <option value="finance">Finance</option>
-                                    <option value="receptionist">Receptionist</option>
+                                    <option value="admin">Administrator</option>
                                 </select>
                             </div>
                         </div>
@@ -99,8 +96,7 @@
                             </div>
                             <div class="flex mb">
                                 <div class="one">
-                                    <label for="">Password</label>
-                                    <input type="password" name="password" placeholder="Enter New Password">
+                                    <a href="" class="btn"> change password?</a>
                                 </div>
                             </div>
                             <div class="change">

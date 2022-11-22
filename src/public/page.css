@@ -4,6 +4,23 @@
 .mbs{
     margin-bottom: .5rem;
 }
+.sb{
+    display: flex;
+    justify-content: space-between;
+}
+.btn{
+    border: none;
+    width: 150px;
+    background-color: rgb(40, 192, 40);
+    color: white;
+    border-radius: 19px;
+    padding: 9px 0px;
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 0px rgb(104, 101, 101);
+}
+.selected{
+    background-color: rgb(163, 162, 162);
+}
 .flex_top{
     display: flex;
     height: 100vh;
@@ -71,11 +88,12 @@
     margin-top: 50px;
 }
 .nav .bottom .lo{
-    background-color: green;
+    background-color: crimson;
     padding: 9px 30px;
     border-radius: 15px;
     text-decoration: none;
     color: white;
+    box-shadow: 0px 0px 4px 0px rgb(104, 101, 101);
     transition: .2s ease;
 }
 .nav .bottom .lo:hover{
@@ -171,7 +189,7 @@
     justify-content: center;
     margin-top: 15px;
 }
-.main .add_staff .form .others .btn input{
+.main .add_staff .form .others .change input{
     height: 35px;
     width: 170px;
     border-radius: 15px;
@@ -185,6 +203,32 @@
 .main .add_staff .form .others .btn input:hover{
     background-color: whitesmoke;
     background-image: none;
+}
+.main .add_staff .form .searches{
+    background-color: rgb(243, 235, 235);
+    padding: 15px 50px;
+    border-radius: 7px;
+}
+.main .add_staff .form .searches .search{
+    border: 1px solid rgb(104, 101, 101);
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+.main .add_staff .form .searches .search img{
+    height: 20px;
+    margin: 5px;
+}
+.main .add_staff .form .searches .search input{
+    border: none;
+    width: 100%;
+    border-radius: 15px;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+.main .add_staff .form .searches .sb .re{
+    background-color: rgb(109, 109, 212);
 }
 
 

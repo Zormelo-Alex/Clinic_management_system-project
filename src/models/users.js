@@ -5,6 +5,21 @@ const userSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.String,
         required: true
     },
+    dob: {
+        type: mongoose.SchemaTypes.Date
+    },
+    gender: {
+        type: mongoose.SchemaTypes.String
+    },
+    role: {
+        type: mongoose.SchemaTypes.String
+    },
+    nationality: {
+        type: mongoose.SchemaTypes.String
+    },
+    pob: {
+        type: mongoose.SchemaTypes.String
+    },
     password: {
         type: mongoose.SchemaTypes.String,
         required: true
@@ -20,8 +35,17 @@ const userSchema = new mongoose.Schema({
     email: {
         type: mongoose.SchemaTypes.String
     },
-    address: {
-        String
+    emergency1: {
+        type: mongoose.SchemaTypes.String
+    },
+    emercency2: {
+        type: mongoose.SchemaTypes.String
+    },
+    address1: {
+        type: mongoose.SchemaTypes.String
+    },
+    address2: {
+        type: mongoose.SchemaTypes.String
     }
 });
 

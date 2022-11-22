@@ -1,0 +1,43 @@
+<%- include("./partials/header") %> 
+    <div class="flex_top">
+        <div class="nav">
+            <div class="top">
+                <img src="./resources/images/it2.jpg" alt="user_image">
+                <h1 class="name"></h1>
+                <h1 class="title">Administrator</h1>
+            </div>
+            <div class="bottom">
+                <ul>
+                    <li class="sm">Staff Management</li>
+                    <li><a href="/addStaff">Add Staff</a></li>
+                    <li><a href="/searchStaff">Search Staff</a></li>
+                    <li class="selected"><a href="/manageSchedule">Manage Schedule</a></li>
+                    <li class="sm">Patient Management</li>
+                    <li><a href="/searchPatient">Search Patient</a></li>
+                    <li><a href="/editInfo">Edit info</a></li>
+                </ul>
+                <div class="log">
+                    <a class="lo" href="/logOut">LogOut</a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="add_staff">
+                <h2 class="title">
+                    Manage Staff Schedule
+                </h2>
+                <div class="form">
+                    <form action="">
+                        <div class="searches mb">
+                            <div class="sb">
+                                <button class="btn re">Re-shuffle</button>
+                                <button class="btn">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
