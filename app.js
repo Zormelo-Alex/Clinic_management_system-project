@@ -3,9 +3,9 @@ const app = express();
 const session = require("express-session");
 const mongoose = require("mongoose");
 const mongoStore = require("connect-mongo");
-const passport = require("passport");
 const Users = require("./src/models/users");
 const auth = require("./src/routes/auth");
+const { hashPassword, compare } = require("./src/utils/helpers");
 const {seed, addAdmin} = require("./seed");
 
 
@@ -29,8 +29,13 @@ app.use(session({
     }),
 }));
 
+
 app.use(auth);
 
+app.use((req, res, next)=>{
+    if(req.session.user.empID) next();
+    else res.send("you cannot access this route");
+})
 app.get("/addStaff", (req, res)=>{
     res.render("administrator")
 });
@@ -39,6 +44,8 @@ app.post("/addStaff", async(req, res)=>{
     if(!req.body.gender) req.body.gender = "male";
     if(!req.body.address2) req.body.address2 = "null";
     if(!req.body.emergency2) req.body.emergency2 = "null";
+    const Password = hashPassword(req.body.password);
+    req.body.password = Password;
     const userDB = await Users.findOne({$or: [{empID: req.body.empID}, {username: req.body.username}]});
     console.log(userDB);
     if(userDB) return res.send("user with that Employee ID or username already exists!");
@@ -74,7 +81,8 @@ app.get("/changePassword", (req, res)=>{
 });
 
 app.get("/logOut", (req, res)=>{
-    res.send("logged out");
+    req.session.user = {};
+    res.redirect("/")
 });
 
 

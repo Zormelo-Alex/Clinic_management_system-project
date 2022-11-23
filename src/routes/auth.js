@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const Users = require("../models/users");
+const { hashPassword, compare } = require("../utils/helpers");
 
 router.get("/", (req, res)=>{
     res.redirect("/login");
@@ -12,13 +13,16 @@ router.get("/login", (req, res)=>{
 
 router.post("/login", async (req, res)=>{
     const {username, password} = req.body;
-    console.log(req.session);
     const foundUsers = await Users.findOne({ $or: [{username: username}, {empID: username}] });
+    const Compared = compare(password, foundUsers.password);
+    //console.log(Compared, foundUsers.password, password);
     if(foundUsers){
+        req.session.user = foundUsers;
+        console.log(req.session);
         if(foundUsers.empID == "EMP0000"){
-            if(password == foundUsers.password) return res.render("administrator");
+            if(Compared) return res.render("administrator");
             res.redirect("/");
-        }else if(password == foundUsers.password){
+        }else if(Compared){
             res.send("authenticated successfully");
         }else{
             res.redirect('/');

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Users = require("./src/models/users");
+const { hashPassword } = require("./src/utils/helpers");
 
 const seed = () =>{
     Users.remove({}, (data, err)=>{
@@ -25,6 +26,8 @@ const addAdmin = () =>{
         password: "alex123",
         empID: "EMP0000"
     }
+    const Password = hashPassword(admin.password);
+    admin.password = Password;
     Users.create(admin, (err,data)=>{
         if(!err){
             console.log(data);
