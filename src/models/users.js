@@ -8,6 +8,9 @@ const userSchema = new mongoose.Schema({
     dob: {
         type: mongoose.SchemaTypes.Date
     },
+    empID: {
+        type: mongoose.SchemaTypes.String
+    },
     gender: {
         type: mongoose.SchemaTypes.String
     },
@@ -38,7 +41,7 @@ const userSchema = new mongoose.Schema({
     emergency1: {
         type: mongoose.SchemaTypes.String
     },
-    emercency2: {
+    emergency2: {
         type: mongoose.SchemaTypes.String
     },
     address1: {

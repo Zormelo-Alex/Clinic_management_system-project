@@ -1,7 +1,17 @@
 const express = require("express");
 const app = express();
+const session = require("express-session");
 const mongoose = require("mongoose");
+const mongoStore = require("connect-mongo");
+const passport = require("passport");
 const Users = require("./src/models/users");
+const auth = require("./src/routes/auth");
+const {seed, addAdmin} = require("./seed");
+
+
+
+//addAdmin();
+//seed()
 
 
 mongoose.connect("mongodb://localhost:27017/cms").then(res=> console.log("db connected successfully...")).catch((err)=> console.log(err));
@@ -10,26 +20,37 @@ app.use(express.static("src"));
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(session({
+    secret: "DOM",
+    resave: false,
+    saveUninitialized: false,
+    store: mongoStore.create({
+        mongoUrl: "mongodb://localhost:27017/cms"
+    }),
+}));
 
-
-app.get("/", (req, res)=>{
-    res.redirect("/login");
-});
-
-app.get("/login", (req, res)=>{
-    res.render("login");
-});
-
-app.post("/login", async (req, res)=>{
-    const {username, password} = req.body;
-    const foundUsers = await Users.findOne({username: username});
-    //console.log(foundUsers);
-    // if(username == "Alexander") res.status(200).render("administrator",{username});
-    res.redirect("/addStaff");
-});
+app.use(auth);
 
 app.get("/addStaff", (req, res)=>{
     res.render("administrator")
+});
+
+app.post("/addStaff", async(req, res)=>{
+    if(!req.body.gender) req.body.gender = "male";
+    if(!req.body.address2) req.body.address2 = "null";
+    if(!req.body.emergency2) req.body.emergency2 = "null";
+    const userDB = await Users.findOne({$or: [{empID: req.body.empID}, {username: req.body.username}]});
+    console.log(userDB);
+    if(userDB) return res.send("user with that Employee ID or username already exists!");
+    Users.create(req.body, (err, newUser)=>{
+        if(!err){
+            console.log(newUser);
+            res.redirect('/addStaff');
+        }else{
+            console.log(err);
+            res.send("error occured while adding user! " + err);
+        }
+    })
 });
 
 app.get("/searchStaff", (req, res)=>{
@@ -59,5 +80,5 @@ app.get("/logOut", (req, res)=>{
 
 
 app.listen("5000", ()=>{
-    console.log("server started on port 5001");
+    console.log("server started on port 5000");
 })

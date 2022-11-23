@@ -3,7 +3,7 @@
         <div class="nav">
             <div class="top">
                 <img src="./resources/images/it2.jpg" alt="user_image">
-                <h1 class="name"></h1>
+                    <h1 class="name"></h1>
                 <h1 class="title">Administrator</h1>
             </div>
             <div class="bottom">
@@ -27,7 +27,7 @@
                     Add New Staff
                 </h2>
                 <div class="form">
-                    <form action="">
+                    <form action="/addStaff" method="post">
                         <div class="name mb">
                             <div class="fullname">
                                 <label for="">Full Name</label>
@@ -42,14 +42,15 @@
                             <div class="gender">
                                 <label class="mbs" for="">Gender</label>
                                 <div class="g_ins">
-                                    Male <input type="radio" name="gender">
-                                Female <input type="radio" name="gender">
+                                    Male <input type="radio" value="male" name="gender">
+                                Female <input type="radio" value="female" name="gender">
                                 </div>
                             </div>
                             <div class="role">
                                 <label for="">Select role</label>
                                 <select name="role" id="" required>
                                     <option value="nurse">Nurse</option>
+                                    <option value="doctor">Doctor</option>
                                     <option value="pharmacist">Pharmacist</option>
                                     <option value="finance">Finance</option>
                                     <option value="receptionist">Receptionist</option>
@@ -60,27 +61,27 @@
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Nationality</label>
-                                    <input type="text" name="nationality" placeholder="Nationality">
+                                    <input type="text" name="nationality" placeholder="Nationality" required>
                                 </div>
                                 <div class="two">
                                     <label for="">Place of birth</label>
-                                    <input type="text" name="place" placeholder="Place of birth">
+                                    <input type="text" name="pob" placeholder="Place of birth" required>
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Contact</label>
-                                    <input type="text" name="phone" placeholder="Phone number">
+                                    <input type="text" name="contact" placeholder="Phone number" required>
                                 </div>
                                 <div class="two">
                                     <label for="">Email</label>
-                                    <input type="email" name="email" placeholder="Enter Email">
+                                    <input type="email" name="email" placeholder="Enter Email" required>
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Address Line 1</label>
-                                    <input type="text" name="address1" placeholder="Enter Address">
+                                    <input type="text" name="address1" placeholder="Enter Address" required>
                                 </div>
                                 <div class="two">
                                     <label for="">Address Line 2</label>
@@ -90,17 +91,21 @@
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Emergency contact 1</label>
-                                    <input type="text" name="emc" placeholder="Enter Contact">
+                                    <input type="text" name="emergency1" placeholder="Enter Contact" required>
                                 </div>
                                 <div class="two">
                                     <label for="">Emergency contact 2</label>
-                                    <input type="text" name="emc2" placeholder="Enter Contact">
+                                    <input type="text" name="emergency2" placeholder="Enter Contact">
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Password</label>
-                                    <input type="password" name="password" placeholder="Enter New Password">
+                                    <input type="password" name="password" placeholder="Enter New Password" required>
+                                </div>
+                                <div class="two">
+                                    <label for="">Employee ID</label>
+                                    <input type="text" name="empID" placeholder="Enter unique ID" required>
                                 </div>
                             </div>
                             <div class="change">
