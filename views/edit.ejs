@@ -7,11 +7,10 @@
                 <h1 class="title"><%= user.role %> </h1>
             </div>
             <div class="bottom">
-                <ul>
+                <ul><% if(user.role == "Admin"){ %> 
                     <li class="sm">Staff Management</li>
                     <li><a href="/addStaff">Add Staff</a></li>
                     <li><a href="/searchStaff">Search Staff</a></li>
-                    <% if(user.role == "Admin"){ %> 
                         <li><a href="/manageSchedule">Manage Schedule</a></li>
                     <% } %> 
                     <li class="sm">Patient Management</li>

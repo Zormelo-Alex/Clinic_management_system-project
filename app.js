@@ -30,6 +30,10 @@ app.use(session({
     }),
 }));
 
+const notAdmin = (req, res, next) =>{
+    if(req.session.user.role == "Admin") next();
+    else res.render("search-p", {user: req.session.user});
+}
 
 app.use(auth);
 
@@ -39,12 +43,12 @@ app.use((req, res, next)=>{
 });
 
 
-app.get("/addStaff", (req, res)=>{
+app.get("/addStaff", notAdmin, (req, res)=>{
     const user = req.session.user;
     res.render("dashboard", {user});
 });
 
-app.post("/addStaff", async(req, res)=>{
+app.post("/addStaff", notAdmin, async(req, res)=>{
     if(!req.body.gender) req.body.gender = "male";
     if(!req.body.address2) req.body.address2 = "null";
     if(!req.body.emergency2) req.body.emergency2 = "null";
@@ -69,16 +73,21 @@ app.post("/update", (req, res)=>{
     res.redirect("/addStaff")
 })
 
-app.get("/searchStaff", (req, res)=>{
-    res.render("search")
+app.get("/searchStaff", notAdmin, async(req, res)=>{
+    const user = req.session.user;
+    const allUsers = await Users.find({});
+    //console.log(allUsers);
+    res.render("search", {user, allUsers})
 });
 
-app.get("/manageSchedule", (req, res)=>{
-    res.render("manage")
+app.get("/manageSchedule", notAdmin, (req, res)=>{
+    const user = req.session.user;
+    res.render("manage", {user});
 });
 
 app.get("/searchPatient", (req, res)=>{
-    res.render("search-p")
+    const user = req.session.user;
+    res.render("search-p", {user})
 });
 
 app.get("/editInfo", (req, res)=>{

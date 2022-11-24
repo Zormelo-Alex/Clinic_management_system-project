@@ -47,6 +47,7 @@
 .nav .top .title{
     font-size: 1.2rem;
     color: rgb(58, 58, 58);
+    text-transform: capitalize;
 }
 .nav .top .name{
     font-size: 1rem;
@@ -230,5 +231,21 @@
 .main .add_staff .form .searches .sb .re{
     background-color: rgb(109, 109, 212);
 }
-
-
+.flex_top .list .cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.flex_top .list .cards a{
+    text-decoration: none;
+    color: black;
+}
+.flex_top .list .cards .card{
+    width: 250px;
+    margin: 10px 20px;
+    padding: 10px 5px;
+    text-align: center;
+    text-transform: capitalize;
+    border-radius: 7px;
+    box-shadow: 0px 0px 5px 0px gray;
+}

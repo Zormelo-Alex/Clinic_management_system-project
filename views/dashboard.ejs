@@ -8,10 +8,10 @@
             </div>
             <div class="bottom">
                 <ul>
+                    <% if(user.role == "Admin"){ %> 
                     <li class="sm">Staff Management</li>
                     <li class="selected"><a href="/addStaff">Add Staff</a></li>
                     <li><a href="/searchStaff">Search Staff</a></li>
-                    <% if(user.role == "Admin"){ %> 
                     <li><a href="/manageSchedule">Manage Schedule</a></li>
                     <% } %> 
                     <li class="sm">Patient Management</li>
@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="two">
                                     <label for="">Employee ID</label>
-                                    <input type="text" name="empID" placeholder="Enter unique ID" required>
+                                    <input type="text" name="empID" placeholder="Enter unique ID" required value="EMP00">
                                 </div>
                             </div>
                             <div class="change">

@@ -3,15 +3,17 @@
         <div class="nav">
             <div class="top">
                 <img src="./resources/images/it2.jpg" alt="user_image">
-                <h1 class="name"></h1>
-                <h1 class="title">Administrator</h1>
+                <h1 class="name"><%= user.username %> </h1>
+                <h1 class="title"><%= user.role %> </h1>
             </div>
             <div class="bottom">
                 <ul>
+                    <% if(user.role == "Admin"){ %> 
                     <li class="sm">Staff Management</li>
                     <li><a href="/addStaff">Add Staff</a></li>
                     <li class="selected"><a href="/searchStaff">Search Staff</a></li>
                     <li><a href="/manageSchedule">Manage Schedule</a></li>
+                    <% } %> 
                     <li class="sm">Patient Management</li>
                     <li><a href="/searchPatient">Search Patient</a></li>
                     <li><a href="/editInfo">Edit info</a></li>
@@ -35,6 +37,23 @@
                             </div>
                         </div>
                     </form>
+                </div>
+                <div class="list">
+                    <div class="cards">
+                        <% allUsers.forEach(User=>{ %>
+                            <a href="/user/<%= User.id %>">
+                                <div class="card">
+                                    <div class="name mbs"> <b><%= User.username %></b></div>
+                                    <hr>
+                                    <div class="role">Role: <b><%= User.role %></b></div>
+                                    <div class="id">User ID: <b><%= User.empID %></b> </div>
+                                    <div class="contact"> Contact: <b><%= User.contact %></b></div>
+                                    <div class="email">E-mail: <b><%= User.email %></b></div>
+                                    <div class="address"> Address: <b><%= User.address1 %></b></div>
+                                </div>
+                            </a>
+                        <% }) %> 
+                    </div>
                 </div>
             </div>
         </div>

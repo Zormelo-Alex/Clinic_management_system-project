@@ -19,7 +19,8 @@ router.post("/login", async (req, res)=>{
         const Compared = compare(password, foundUser.password);
         if(Compared){
             req.session.user = foundUser;
-            res.render("dashboard", {user: foundUser});
+            if(foundUser.role == "Admin")return res.render("dashboard", {user: foundUser});
+            res.render("search-p", {user: foundUser});
         }else{
             console.log("incorrect password")
             res.redirect("/");
@@ -32,7 +33,6 @@ router.post("/login", async (req, res)=>{
 
 router.get("/logOut", (req, res)=>{
     req.session.user = {};
-    console.log(req.session);
     console.log("logged out");
     res.redirect("/")
 });
