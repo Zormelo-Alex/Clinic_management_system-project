@@ -1,0 +1,127 @@
+<%- include("./partials/header") %> 
+    <div class="flex_top">
+        <div class="nav">
+            <div class="top">
+                <img src="./resources/images/it2.jpg" alt="user_image">
+                <h1 class="name"><%= user.username %> </h1>
+                <h1 class="title"><%= user.role %> </h1>
+            </div>
+            <div class="bottom">
+                <ul><% if(user.role == "Admin"){ %> 
+                    <li class="sm">Staff Management</li>
+                    <li><a href="/addStaff">Add Staff</a></li>
+                    <li class="selected"><a href="/searchStaff">Search Staff</a></li>
+                        <li><a href="/manageSchedule">Manage Schedule</a></li>
+                    <% } %> 
+                    <li class="sm">Patient Management</li>
+                    <li><a href="/searchPatient">Search Patient</a></li>
+                    <li><a href="/editInfo">Edit info</a></li>
+                </ul>
+                <div class="log">
+                    <a class="lo" href="/logOut">LogOut</a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="add_staff">
+                <h2 class="title">
+                    Edit staff info
+                </h2>
+                <div class="form">
+                    <form action="/update" method="post">
+                        <div class="name mb">
+                            <div class="fullname">
+                                <label for="">Full Name</label>
+                                <input value="<%= dbUser.username %> " type="text" name="username" placeholder="Username" required>
+                            </div>
+                            <div class="dob">
+                                <label for="">Date of birth</label>
+                                <input type="date" name="dob" required value="<%= dbUser.dob %> ">
+                            </div>
+                        </div>
+                        <div class="gen mb">
+                            <div class="gender">
+                                <label class="mbs" for="">Gender</label>
+                                <div class="g_ins">
+                                    Male <input type="radio" name="gender" <% if(dbUser.gender == "male"){ %> checked <% } %>>
+                                Female <input type="radio" name="gender" <% if(dbUser.gender == "female"){ %> checked <% } %> >
+                                </div>
+                            </div>
+                            <div class="role">
+                                <label for="">Select role</label>
+                                <select name="role" id="" required>
+                                    <% if(dbUser.role == "Admin"){ %> 
+                                    <option value="admin">Administrator</option>
+                                    <% }else{ %> 
+                                    <option value="<%= dbUser.role %> "><%= dbUser.role %> </option>
+                                    <option value="nurse">Nurse</option>
+                                    <option value="doctor">Doctor</option>
+                                    <option value="pharmacist">Pharmacist</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="receptionist">Receptionist</option>
+                                    <% } %> 
+                                </select>
+                            </div>
+                        </div>
+                        <div class="others">
+                            <div class="flex mb">
+                                <div class="one">
+                                    <label for="">Nationality</label>
+                                    <input type="text" name="nationality" placeholder="Nationality" readonly value="<%= dbUser.nationality %> ">
+                                </div>
+                                <div class="two">
+                                    <label for="">Place of birth</label>
+                                    <input type="text" name="place" placeholder="Place of birth" readonly value="<%= dbUser.pob %>">
+                                </div>
+                            </div>
+                            <div class="flex mb">
+                                <div class="one">
+                                    <label for="">Contact</label>
+                                    <input type="text" name="phone" placeholder="Phone number" value="<%= dbUser.contact %> ">
+                                </div>
+                                <div class="two">
+                                    <label for="">Email</label>
+                                    <input type="email" name="email" placeholder="Enter Email" value="<%= dbUser.email %> ">
+                                </div>
+                            </div>
+                            <div class="flex mb">
+                                <div class="one">
+                                    <label for="">Address Line 1</label>
+                                    <input type="text" name="address1" placeholder="Enter Address" value="<%= dbUser.address1 %> ">
+                                </div>
+                                <div class="two">
+                                    <label for="">Address Line 2</label>
+                                    <input type="text" name="address2" placeholder="Enter Address" value="<%= dbUser.address2 %> ">
+                                </div>
+                            </div>
+                            <div class="flex mb">
+                                <div class="one">
+                                    <label for="">Emergency contact 1</label>
+                                    <input type="text" name="emc" placeholder="Enter Contact" value="<%= dbUser.emergency1 %> ">
+                                </div>
+                                <div class="two">
+                                    <label for="">Emergency contact 2</label>
+                                    <input type="text" name="emc2" placeholder="Enter Contact" value="<%= dbUser.emergency2 %> ">
+                                </div>
+                            </div>
+                            <div class="flex mb">
+                                <div class="one">
+                                    <label for="">Password</label>
+                                    <input type="password" name="password" placeholder="Enter New Password" required readonly value="<%= dbUser.password %> ">
+                                </div>
+                                <div class="two">
+                                    <label for="">Employee ID</label>
+                                    <input type="text" name="empID" placeholder="Enter unique ID" readonly value="<%= dbUser.empID %> ">
+                                </div>
+                            </div>
+                            <div class="change">
+                                <input type="submit" value="update" class="submit">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<%- include("./partials/footer") %> 

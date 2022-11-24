@@ -20,7 +20,7 @@ mongoose.connect("mongodb://localhost:27017/cms").then(res=> console.log("db con
 app.use(express.static("src"));
 app.set("view engine", "ejs");
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 app.use(session({
     secret: "DOM",
     resave: false,
@@ -80,6 +80,14 @@ app.get("/searchStaff", notAdmin, async(req, res)=>{
     res.render("search", {user, allUsers})
 });
 
+app.post("/getUser", async (req, res)=>{
+    const payload = req.body.payload.trim();
+    const search = await Users.find({username: {$regex: new RegExp('.*'+ payload + '.*', 'i')}}).exec();
+    //limit search result to 10
+    //search = search.slice(0, 10);
+    res.send({payload : search});
+});
+// const search = await Users.find({$or: [{username: {$regex: new RegExp('.*'+ payload + '.*', 'i')}}, {empID: {$regex: new RegExp('^'+ payload + '.*', 'i')}}]}).exec();
 app.get("/manageSchedule", notAdmin, (req, res)=>{
     const user = req.session.user;
     res.render("manage", {user});
@@ -93,6 +101,13 @@ app.get("/searchPatient", (req, res)=>{
 app.get("/editInfo", (req, res)=>{
     const user = req.session.user;
     res.render("edit", {user});
+});
+
+app.get("/user/:id", async (req, res)=>{
+    const id = req.params.id;
+    const user = req.session.user;
+    const findUser = await Users.findById(id);
+    res.render("editStaff", {user, dbUser: findUser});
 });
 
 app.get("/changePassword", (req, res)=>{

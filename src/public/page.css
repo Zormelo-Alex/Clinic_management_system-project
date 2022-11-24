@@ -209,6 +209,28 @@
     background-color: rgb(243, 235, 235);
     padding: 15px 50px;
     border-radius: 7px;
+    position: relative;
+}
+.main .add_staff .form .searches .results{
+    position: absolute;
+    width: 100%;
+    border-radius: 7px;
+    left: 0;
+    background-color: rgb(243, 235, 235);
+    top: 4.5rem;
+}
+.main .add_staff .form .searches .results a{
+    text-decoration: none;
+    color: black;
+}
+.main .add_staff .form .searches .results a:hover{
+    color: green;
+    text-decoration: underline;
+}
+.main .add_staff .form .searches .results a p{
+    padding: 5px 25px;
+    display: flex;
+    justify-content: space-between;
 }
 .main .add_staff .form .searches .search{
     border: 1px solid rgb(104, 101, 101);

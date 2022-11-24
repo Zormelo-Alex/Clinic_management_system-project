@@ -32,8 +32,11 @@
                     <form action="">
                         <div class="searches mb">
                             <div class="search">
-                                <input type="search" name="username" placeholder="Enter username or ID" required>
+                                <input type="search" name="username" placeholder="Enter username" onkeyup="sendData(this)">
                                 <img src="../resources/icons/search.png" alt="search icon">
+                            </div>
+                            <div class="results">
+                                
                             </div>
                         </div>
                     </form>
@@ -58,5 +61,5 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
+<%- include("./partials/footer") %> 
