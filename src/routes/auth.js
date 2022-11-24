@@ -13,24 +13,30 @@ router.get("/login", (req, res)=>{
 
 router.post("/login", async (req, res)=>{
     const {username, password} = req.body;
-    const foundUsers = await Users.findOne({ $or: [{username: username}, {empID: username}] });
-    const Compared = compare(password, foundUsers.password);
+    const foundUser = await Users.findOne({ $or: [{username: username}, {empID: username}] });
     //console.log(Compared, foundUsers.password, password);
-    if(foundUsers){
-        req.session.user = foundUsers;
-        console.log(req.session);
-        if(foundUsers.empID == "EMP0000"){
-            if(Compared) return res.render("administrator");
-            res.redirect("/");
-        }else if(Compared){
-            res.send("authenticated successfully");
+    if(foundUser){
+        const Compared = compare(password, foundUser.password);
+        if(Compared){
+            req.session.user = foundUser;
+            res.render("dashboard", {user: foundUser});
         }else{
-            res.redirect('/');
+            console.log("incorrect password")
+            res.redirect("/");
         }
     }else{
+        console.log("couldnt find user!");
        res.redirect("/");
     }
 });
+
+router.get("/logOut", (req, res)=>{
+    req.session.user = {};
+    console.log(req.session);
+    console.log("logged out");
+    res.redirect("/")
+});
+
 
 
 module.exports = router;

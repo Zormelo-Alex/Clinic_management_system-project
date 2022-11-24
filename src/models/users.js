@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     dob: {
-        type: mongoose.SchemaTypes.Date
+        type: mongoose.SchemaTypes.String
     },
     empID: {
         type: mongoose.SchemaTypes.String

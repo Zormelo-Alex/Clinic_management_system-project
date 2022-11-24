@@ -3,15 +3,17 @@
         <div class="nav">
             <div class="top">
                 <img src="./resources/images/it2.jpg" alt="user_image">
-                    <h1 class="name"></h1>
-                <h1 class="title">Administrator</h1>
+                    <h1 class="name"><%= user.username %> </h1>
+                <h1 class="title"><%= user.role %> </h1>
             </div>
             <div class="bottom">
                 <ul>
                     <li class="sm">Staff Management</li>
                     <li class="selected"><a href="/addStaff">Add Staff</a></li>
                     <li><a href="/searchStaff">Search Staff</a></li>
+                    <% if(user.role == "Admin"){ %> 
                     <li><a href="/manageSchedule">Manage Schedule</a></li>
+                    <% } %> 
                     <li class="sm">Patient Management</li>
                     <li><a href="/searchPatient">Search Patient</a></li>
                     <li><a href="/editInfo">Edit info</a></li>

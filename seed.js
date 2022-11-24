@@ -12,7 +12,7 @@ const seed = () =>{
 const addAdmin = () =>{
     const admin = {
         username: "Alexander Dodzi Zormelo",
-        dob: "09-07-0000",
+        dob: "2000-07-09",
         gender: "male",
         role: "Admin",
         nationality: "Ghanaian",

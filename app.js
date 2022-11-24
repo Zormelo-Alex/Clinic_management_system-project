@@ -5,13 +5,14 @@ const mongoose = require("mongoose");
 const mongoStore = require("connect-mongo");
 const Users = require("./src/models/users");
 const auth = require("./src/routes/auth");
-const { hashPassword, compare } = require("./src/utils/helpers");
+const { hashPassword } = require("./src/utils/helpers");
 const {seed, addAdmin} = require("./seed");
 
 
 
-//addAdmin();
+
 //seed()
+//addAdmin();
 
 
 mongoose.connect("mongodb://localhost:27017/cms").then(res=> console.log("db connected successfully...")).catch((err)=> console.log(err));
@@ -34,10 +35,13 @@ app.use(auth);
 
 app.use((req, res, next)=>{
     if(req.session.user.empID) next();
-    else res.send("you cannot access this route");
-})
+    else res.send("cant");
+});
+
+
 app.get("/addStaff", (req, res)=>{
-    res.render("administrator")
+    const user = req.session.user;
+    res.render("dashboard", {user});
 });
 
 app.post("/addStaff", async(req, res)=>{
@@ -60,6 +64,11 @@ app.post("/addStaff", async(req, res)=>{
     })
 });
 
+app.post("/update", (req, res)=>{
+    console.log(req.body);
+    res.redirect("/addStaff")
+})
+
 app.get("/searchStaff", (req, res)=>{
     res.render("search")
 });
@@ -73,16 +82,12 @@ app.get("/searchPatient", (req, res)=>{
 });
 
 app.get("/editInfo", (req, res)=>{
-    res.render("edit")
+    const user = req.session.user;
+    res.render("edit", {user});
 });
 
 app.get("/changePassword", (req, res)=>{
     res.render("changePass")
-});
-
-app.get("/logOut", (req, res)=>{
-    req.session.user = {};
-    res.redirect("/")
 });
 
 
