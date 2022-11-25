@@ -1,6 +1,9 @@
 *{
     padding: 0; margin: 0;box-sizing: border-box;
 }
+input{
+    text-transform: capitalize;
+}
 .form .view{
     color: white;
     cursor: pointer;

@@ -32,7 +32,7 @@
                         <div class="name mb">
                             <div class="fullname">
                                 <label for="">Full Name</label>
-                                <input value="<%= user.username %> " type="text" name="username" placeholder="Username" required>
+                                <input value="<%= user.username %>" type="text" name="username" placeholder="Username" required>
                             </div>
                             <div class="dob">
                                 <label for="">Date of birth</label>
@@ -51,13 +51,13 @@
                                 <label for="">Select role</label>
                                 <select name="role" id="" required>
                                     <% if(user.role == "Admin"){ %> 
-                                    <option value="admin">Administrator</option>
+                                    <option value="Admin">Administrator</option>
                                     <% }else{ %> 
-                                    <option value="nurse">Nurse</option>
-                                    <option value="doctor">Doctor</option>
-                                    <option value="pharmacist">Pharmacist</option>
-                                    <option value="finance">Finance</option>
-                                    <option value="receptionist">Receptionist</option>
+                                    <option value="Nurse">Nurse</option>
+                                    <option value="Doctor">Doctor</option>
+                                    <option value="Pharmacist">Pharmacist</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="OPD">OPD</option>
                                     <% } %> 
                                 </select>
                             </div>
@@ -66,7 +66,7 @@
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Nationality</label>
-                                    <input type="text" name="nationality" placeholder="Nationality" value="<%= user.nationality %> ">
+                                    <input type="text" name="nationality" placeholder="Nationality" value="<%= user.nationality %>">
                                 </div>
                                 <div class="two">
                                     <label for="">Place of birth</label>
@@ -76,41 +76,41 @@
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Contact</label>
-                                    <input type="text" name="phone" placeholder="Phone number" value="<%= user.contact %> ">
+                                    <input type="text" name="phone" placeholder="Phone number" value="<%= user.contact %>">
                                 </div>
                                 <div class="two">
                                     <label for="">Email</label>
-                                    <input type="email" name="email" placeholder="Enter Email" value="<%= user.email %> ">
+                                    <input type="email" name="email" placeholder="Enter Email" value="<%= user.email %>">
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Address Line 1</label>
-                                    <input type="text" name="address1" placeholder="Enter Address" value="<%= user.address1 %> ">
+                                    <input type="text" name="address1" placeholder="Enter Address" value="<%= user.address1 %>">
                                 </div>
                                 <div class="two">
                                     <label for="">Address Line 2</label>
-                                    <input type="text" name="address2" placeholder="Enter Address" value="<%= user.address2 %> ">
+                                    <input type="text" name="address2" placeholder="Enter Address" value="<%= user.address2 %>">
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Emergency contact 1</label>
-                                    <input type="text" name="emc" placeholder="Enter Contact" value="<%= user.emergency1 %> ">
+                                    <input type="text" name="emc" placeholder="Enter Contact" value="<%= user.emergency1 %>">
                                 </div>
                                 <div class="two">
                                     <label for="">Emergency contact 2</label>
-                                    <input type="text" name="emc2" placeholder="Enter Contact" value="<%= user.emergency2 %> ">
+                                    <input type="text" name="emc2" placeholder="Enter Contact" value="<%= user.emergency2 %>">
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Password</label>
-                                    <input type="password" name="password" placeholder="Enter New Password" required value="<%= user.password %> ">
+                                    <input type="password" name="password" placeholder="Enter New Password" required value="<%= user.password %>">
                                 </div>
                                 <div class="two">
                                     <label for="">Employee ID</label>
-                                    <input type="text" name="empID" placeholder="Enter unique ID" readonly value="<%= user.empID %> ">
+                                    <input type="text" name="empID" placeholder="Enter unique ID" readonly value="<%= user.empID %>">
                                 </div>
                             </div>
                             <div class="change">

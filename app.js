@@ -68,9 +68,10 @@ app.post("/addStaff", notAdmin, async(req, res)=>{
     })
 });
 
-app.post("/updateStaff", (req, res)=>{
-    console.log(req.body);
-    res.redirect("/searchStaff")
+app.post("/updateStaff", async(req, res)=>{
+    const { empID } = req.body;
+    const findUser = await Users.findOneAndUpdate({empID}, req.body);
+    return res.redirect("/searchStaff");
 });
 
 app.post("/updatePatient", (req, res)=>{
