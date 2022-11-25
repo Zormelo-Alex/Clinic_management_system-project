@@ -68,10 +68,15 @@ app.post("/addStaff", notAdmin, async(req, res)=>{
     })
 });
 
-app.post("/update", (req, res)=>{
+app.post("/updateStaff", (req, res)=>{
     console.log(req.body);
-    res.redirect("/addStaff")
-})
+    res.redirect("/searchStaff")
+});
+
+app.post("/updatePatient", (req, res)=>{
+    console.log(req.body);
+    res.redirect("/searchStaff")
+});
 
 app.get("/searchStaff", notAdmin, async(req, res)=>{
     const user = req.session.user;

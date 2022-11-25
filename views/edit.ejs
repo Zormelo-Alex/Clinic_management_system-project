@@ -28,7 +28,7 @@
                     Edit info
                 </h2>
                 <div class="form">
-                    <form action="/update" method="post">
+                    <form action="/updateStaff" method="post">
                         <div class="name mb">
                             <div class="fullname">
                                 <label for="">Full Name</label>
@@ -36,15 +36,15 @@
                             </div>
                             <div class="dob">
                                 <label for="">Date of birth</label>
-                                <input type="date" name="dob" required value="<%= user.dob %> ">
+                                <input type="date" name="dob" required value= <%= user.dob %>>
                             </div>
                         </div>
                         <div class="gen mb">
                             <div class="gender">
                                 <label class="mbs" for="">Gender</label>
                                 <div class="g_ins">
-                                    Male <input type="radio" name="gender" <% if(user.gender == "male"){ %> checked <% } %>>
-                                Female <input type="radio" name="gender" <% if(user.gender == "female"){ %> checked <% } %> >
+                                    Male <input value="male" type="radio" name="gender" <% if(user.gender == "male"){ %> checked <% } %>>
+                                Female <input value="female" type="radio" name="gender" <% if(user.gender == "female"){ %> checked <% } %> >
                                 </div>
                             </div>
                             <div class="role">
