@@ -16,6 +16,9 @@
                     <% } %> 
                     <li class="sm">Patient Management</li>
                     <li class="selected"><a href="/searchPatient">Search Patient</a></li>
+                    <% if(user.role == "OPD"){ %> 
+                        <li><a href="/addPatient">Add Patient</a></li>
+                    <% } %> 
                     <li><a href="/editInfo">Edit info</a></li>
                 </ul>
                 <div class="log">
@@ -38,8 +41,24 @@
                         </div>
                     </form>
                 </div>
+                <div class="list">
+                    <div class="cards">
+                        <% allPatients.forEach(Patient=>{ %>
+                            <a href="/patient/<%= Patient.id %>">
+                                <div class="card">
+                                    <div class="name mbs"> <b><%= Patient.username %></b></div>
+                                    <hr>
+                                    <div class="role">First Visit: <b><%= Patient.dateAdded %></b></div>
+                                    <div class="id">Patient ID: <b><%= Patient.pID %></b> </div>
+                                    <div class="contact"> Contact: <b><%= Patient.contact %></b></div>
+                                    <div class="address"> Address: <b><%= Patient.address %></b></div>
+                                </div>
+                            </a>
+                        <% }) %> 
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+
+    <%- include("./partials/footer") %> 

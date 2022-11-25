@@ -15,6 +15,9 @@
                     <% } %> 
                     <li class="sm">Patient Management</li>
                     <li><a href="/searchPatient">Search Patient</a></li>
+                    <% if(user.role == "OPD"){ %> 
+                        <li><a href="/addPatient">Add Patient</a></li>
+                    <% } %> 
                     <li class="selected"><a href="/editInfo">Edit info</a></li>
                 </ul>
                 <div class="log">
@@ -122,5 +125,5 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
+    <%- include("./partials/footer") %> 

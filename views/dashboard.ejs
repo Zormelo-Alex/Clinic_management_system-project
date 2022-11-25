@@ -15,6 +15,9 @@
                     <li><a href="/manageSchedule">Manage Schedule</a></li>
                     <% } %> 
                     <li class="sm">Patient Management</li>
+                    <% if(user.role == "OPD"){ %> 
+                        <li><a href="/addPatient">Add Patient</a></li>
+                    <% } %> 
                     <li><a href="/searchPatient">Search Patient</a></li>
                     <li><a href="/editInfo">Edit info</a></li>
                 </ul>
@@ -55,7 +58,7 @@
                                     <option value="doctor">Doctor</option>
                                     <option value="pharmacist">Pharmacist</option>
                                     <option value="finance">Finance</option>
-                                    <option value="receptionist">Receptionist</option>
+                                    <option value="OPD">OPD</option>
                                 </select>
                             </div>
                         </div>
@@ -119,5 +122,5 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
+    <%- include("./partials/footer") %> 
