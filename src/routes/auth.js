@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const Users = require("../models/users");
+const Patients = require("../models/patients");
 const { hashPassword, compare } = require("../utils/helpers");
 
 router.get("/", (req, res)=>{
@@ -20,7 +21,8 @@ router.post("/login", async (req, res)=>{
         if(Compared){
             req.session.user = foundUser;
             if(foundUser.role == "Admin")return res.render("dashboard", {user: foundUser});
-            res.render("search-p", {user: foundUser});
+            const patientDB = await Patients.find({});
+            res.redirect("/searchPatient");
         }else{
             console.log("incorrect password")
             res.redirect("/");

@@ -15,7 +15,7 @@
                     <li><a href="/manageSchedule">Manage Schedule</a></li>
                     <% } %> 
                     <li class="sm">Patient Management</li>
-                    <% if(user.role == "OPD"){ %> 
+                    <% if(user.role == "Records"){ %> 
                         <li><a href="/addPatient">Add Patient</a></li>
                     <% } %> 
                     <li><a href="/searchPatient">Search Patient</a></li>
@@ -54,10 +54,11 @@
                             <div class="role">
                                 <label for="">Select role</label>
                                 <select name="role" id="" required>
-                                    <option value="nurse">Nurse</option>
-                                    <option value="doctor">Doctor</option>
-                                    <option value="pharmacist">Pharmacist</option>
-                                    <option value="finance">Finance</option>
+                                    <option value="Nurse">Nurse</option>
+                                    <option value="Records">Records</option>
+                                    <option value="Doctor">Doctor</option>
+                                    <option value="Pharmacist">Pharmacist</option>
+                                    <option value="Finance">Finance</option>
                                     <option value="OPD">OPD</option>
                                 </select>
                             </div>

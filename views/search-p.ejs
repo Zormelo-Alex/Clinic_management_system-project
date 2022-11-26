@@ -16,7 +16,7 @@
                     <% } %> 
                     <li class="sm">Patient Management</li>
                     <li class="selected"><a href="/searchPatient">Search Patient</a></li>
-                    <% if(user.role == "OPD"){ %> 
+                    <% if(user.role == "Records"){ %> 
                         <li><a href="/addPatient">Add Patient</a></li>
                     <% } %> 
                     <li><a href="/editInfo">Edit info</a></li>
@@ -35,8 +35,11 @@
                     <form action="">
                         <div class="searches mb">
                             <div class="search">
-                                <input type="search" name="username" placeholder="Enter patient username or ID" required>
+                                <input type="search" name="username" placeholder="Enter patient username or ID" required onkeyup="sendPatientData(this)">
                                 <img src="../resources/icons/search.png" alt="search icon">
+                            </div>
+                            <div class="results">
+                                
                             </div>
                         </div>
                     </form>
@@ -48,7 +51,7 @@
                                 <div class="card">
                                     <div class="name mbs"> <b><%= Patient.username %></b></div>
                                     <hr>
-                                    <div class="role">First Visit: <b><%= Patient.dateAdded %></b></div>
+                                    <div class="role">First Visit: <b><%= Patient.dateAdded.toDateString(); %></b></div>
                                     <div class="id">Patient ID: <b><%= Patient.pID %></b> </div>
                                     <div class="contact"> Contact: <b><%= Patient.contact %></b></div>
                                     <div class="address"> Address: <b><%= Patient.address %></b></div>

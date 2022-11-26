@@ -2,22 +2,21 @@
     <div class="flex_top">
         <div class="nav">
             <div class="top">
-                <img src="./resources/images/it2.jpg" alt="user_image">
-                    <h1 class="name"><%= user.username %> </h1>
+                <img src="./resources/images/it2.jpg alt="user_image">
+                <h1 class="name"><%= user.username %> </h1>
                 <h1 class="title"><%= user.role %> </h1>
             </div>
             <div class="bottom">
-                <ul>
-                    <% if(user.role == "Admin"){ %> 
+                <ul><% if(user.role == "Admin"){ %> 
                     <li class="sm">Staff Management</li>
-                    <li class="selected"><a href="/addStaff">Add Staff</a></li>
-                    <li><a href="/searchStaff">Search Staff</a></li>
-                    <li><a href="/manageSchedule">Manage Schedule</a></li>
+                    <li><a href="/addStaff">Add Staff</a></li>
+                    <li class="selected"><a href="/searchStaff">Search Staff</a></li>
+                        <li><a href="/manageSchedule">Manage Schedule</a></li>
                     <% } %> 
                     <li class="sm">Patient Management</li>
-                    <li><a href="/searchPatient">Search Patient</a></li>
+                    <li class="selected"><a href="/searchPatient">Search Patient</a></li>
                     <% if(user.role == "Records"){ %> 
-                        <li class="selected"><a href="/addPatient">Add Patient</a></li>
+                        <li><a href="/addPatient">Add Patient</a></li>
                     <% } %> 
                     <li><a href="/editInfo">Edit info</a></li>
                 </ul>
@@ -29,35 +28,40 @@
         <div class="main">
             <div class="add_staff">
                 <h2 class="title">
-                    Add New Patient
+                    Patient info
                 </h2>
                 <div class="form">
-                    <form action="/addPatient" method="post">
+                    <form action="/updatePatient" method="post">
                         <div class="name mb">
                             <div class="fullname">
                                 <label for="">Full Name</label>
-                                <input type="text" name="username" placeholder="Username" required>
+                                <input value="<%= dbPatient.username %>" type="text" name="username" placeholder="Username" required <% if(user.role != "Records"){ %> readonly  <% } %> >
                             </div>
                             <div class="dob">
                                 <label for="">Date of birth</label>
-                                <input type="date" name="dob" required>
+                                <input value=<%= dbPatient.dob %>  type="date" name="dob" required <% if(user.role != "Records"){ %> readonly  <% } %>>
                             </div>
                         </div>
                         <div class="gen mb">
                             <div class="gender">
                                 <label class="mbs" for="">Gender</label>
                                 <div class="g_ins">
-                                    Male <input type="radio" value="male" name="gender" checked>
-                                Female <input type="radio" value="female" name="gender">
+                                    Male <input value="male" type="radio" name="gender" <% if(dbPatient.gender == "male"){ %> checked <% } %>>
+                                Female <input value="female" type="radio" name="gender" <% if(dbPatient.gender == "female"){ %> checked <% } %> >
                                 </div>
                             </div>
                             <div class="role">
                                 <label for="">Relationship Status</label>
                                 <select name="maritalStatus" id="" required>
+                                    <% if(user.role != "Records"){ %> 
+                                        <option value="single"><%= dbPatient.maritalStatus %></option>
+                                    <% }else{ %>
+                                    <option value="<%= dbPatient.maritalStatus %>"><%= dbPatient.maritalStatus %></option>
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
                                     <option value="Divorce">Divorced</option>
                                     <option value="Widow">Widowed</option>
+                                    <% } %> 
                                 </select>
                             </div>
                         </div>
@@ -65,31 +69,33 @@
                             <div class="flex mb">
                                 <div class="one mb">
                                     <label for="">Contact</label>
-                                    <input type="text" name="contact" placeholder="Phone number" required>
+                                    <input value="<%= dbPatient.contact %>" type="text" name="contact" placeholder="Phone number" required <% if(user.role != "Records"){ %> readonly  <% } %>>
                                 </div>
                                 <div class="two">
                                     <label for="">Patient ID</label>
-                                    <input type="text" name="pID" placeholder="Assign unique ID" required value="P00">
+                                    <input type="text" name="pID" placeholder="Assign unique ID" required value="<%= dbPatient.pID %>" readonly>
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one mb">
                                     <label for="">Address Line</label>
-                                    <input type="text" name="address" placeholder="Enter Address" required>
+                                    <input value="<%= dbPatient.address %>" type="text" name="address" placeholder="Enter Address" required <% if(user.role != "Records"){ %> readonly  <% } %>>
                                 </div>
                                 <div class="one">
                                     <label for="">Emergency contact</label>
-                                    <input type="text" name="emergency" placeholder="Enter Contact" required>
+                                    <input value="<%= dbPatient.emergency %>" type="text" name="emergency" placeholder="Enter Contact" required <% if(user.role != "Records"){ %> readonly  <% } %>>
                                 </div>
                             </div>
+                            <% if(user.role == "Records"){ %>
                             <div class="change">
-                                <input type="submit" value="submit" class="submit">
+                                <input type="submit" value="Update" class="submit">
                             </div>
+                            <% } %>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <%- include("./partials/footer") %> 
+    
+<%- include("./partials/footer") %> 

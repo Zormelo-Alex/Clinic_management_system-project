@@ -45,10 +45,6 @@ router.post("/updateStaff", async(req, res)=>{
     return res.redirect("/searchStaff");
 });
 
-router.post("/updatePatient", (req, res)=>{
-    console.log(req.body);
-    res.redirect("/searchStaff")
-});
 
 router.get("/searchStaff", notAdmin, async(req, res)=>{
     const user = req.session.user;
