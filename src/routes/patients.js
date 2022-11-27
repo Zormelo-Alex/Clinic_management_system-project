@@ -32,7 +32,7 @@ router.get("/searchPatient", async (req, res)=>{
 
 router.post("/getPatient", async (req, res)=>{
     const payload = req.body.payload.trim();
-    const search = await Patients.find({username: {$regex: new RegExp('.*'+ payload + '.*', 'i')}}).exec();
+    const search = await Patients.find({$or: [{username: {$regex: new RegExp('.*'+ payload + '.*', 'i')}}, {pID: {$regex: new RegExp('^'+ payload + '.*', 'i')}}]}).exec();
     //limit search result to 10
     //search = search.slice(0, 10);
     res.send({payload : search});

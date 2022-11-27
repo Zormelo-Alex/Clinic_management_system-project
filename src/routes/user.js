@@ -60,7 +60,7 @@ router.post("/getUser", async (req, res)=>{
     //search = search.slice(0, 10);
     res.send({payload : search});
 });
-// const search = await Users.find({$or: [{username: {$regex: new RegExp('.*'+ payload + '.*', 'i')}}, {empID: {$regex: new RegExp('^'+ payload + '.*', 'i')}}]}).exec();
+
 router.get("/manageSchedule", notAdmin, (req, res)=>{
     const user = req.session.user;
     res.render("manage", {user});
