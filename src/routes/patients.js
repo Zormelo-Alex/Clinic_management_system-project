@@ -58,10 +58,12 @@ router.get("/patient/:id/addData", async (req, res)=>{
     const findPatient = await Patients.findById(id);
     const pmedData = await medData.find({pID: id});
     if(pmedData.length > 0){
-        console.log("found something");
         return res.render("addToPatientData", {user, pmedData, dbPatient: findPatient});
+    }else if(user.role == "OPD" || user.role == "Nurse"){
+       return res.render("addMedData", {user, dbPatient: findPatient});
+    }else{
+        return res.send("Patient has no Medical data file yet! request from OPD or Nurses")
     }
-    res.render("addMedData", {user, dbPatient: findPatient});
 });
 
 router.post("/patient/:id/addData", async (req, res)=>{
@@ -72,14 +74,15 @@ router.post("/patient/:id/addData", async (req, res)=>{
     res.redirect("back");
 });
 
-router.post("/patient/:id/updateData", async (req, res)=>{
+router.post("/patient/:id/updateData/:formid", async (req, res)=>{
     const id = req.params.id;
+    const formid = req.params.formid;
     const user = req.session.user;
     req.body.pID = id;
     const pmedData = await medData.find({pID: id});
     if(pmedData.length > 0){
-        console.log("found something");
-        console.log(req.body, pmedData);
+        const findForm = await medData.findByIdAndUpdate(formid, req.body);
+        console.log("Updated");
     }
     res.redirect("back");
 });

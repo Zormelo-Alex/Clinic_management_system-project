@@ -33,7 +33,7 @@
                 <% pmedData.forEach(data=>{ %>
 
                 <div class="form">
-                    <form action="/patient/<%= dbPatient._id %>/updateData" method="post">
+                    <form action="/patient/<%= dbPatient._id %>/updateData/<%= data._id %>" method="post">
                         <% if(user.role != "Finance"){ %> 
                         <div class="name mb">
                             <div class="fullname">
