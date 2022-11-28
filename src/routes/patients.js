@@ -72,6 +72,18 @@ router.post("/patient/:id/addData", async (req, res)=>{
     res.redirect("back");
 });
 
+router.post("/patient/:id/updateData", async (req, res)=>{
+    const id = req.params.id;
+    const user = req.session.user;
+    req.body.pID = id;
+    const pmedData = await medData.find({pID: id});
+    if(pmedData.length > 0){
+        console.log("found something");
+        console.log(req.body, pmedData);
+    }
+    res.redirect("back");
+});
+
 router.get("/patient/:id/allPatientData", async (req, res)=>{
     const id = req.params.id;
     const user = req.session.user;
