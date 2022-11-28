@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const Patients = require("../models/patients");
+const medData = require("../models/medData");
 
 
 const notRecords = (req, res, next) =>{
@@ -56,6 +57,22 @@ router.get("/patient/:id/addData", async (req, res)=>{
     const user = req.session.user;
     const findPatient = await Patients.findById(id);
     res.render("addMedData", {user, dbPatient: findPatient});
+});
+
+router.post("/patient/:id/addData", async (req, res)=>{
+    const id = req.params.id;
+    const user = req.session.user;
+    req.body.pID = id;
+    const newMedData = medData.create(req.body);
+    res.redirect("back");
+});
+
+router.get("/patient/:id/allPatientData", async (req, res)=>{
+    const id = req.params.id;
+    const user = req.session.user;
+    const patient = await Patients.findById(id);
+    const pmedData = await medData.find({pID: id});
+    res.send(pmedData);
 });
 
 

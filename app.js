@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const mongoStore = require("connect-mongo");
 const Users = require("./src/models/users");
 const Patients = require("./src/models/patients");
+const medData = require("./src/models/medData");
 const auth = require("./src/routes/auth");
 const user = require("./src/routes/user");
 const patient = require("./src/routes/patients");

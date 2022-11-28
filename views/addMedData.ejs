@@ -28,69 +28,90 @@
         <div class="main">
             <div class="add_staff">
                 <h2 class="title">
-                    Patient info
+                    medical info - <%= dbPatient.username %> 
                 </h2>
                 <div class="form">
-                    <form action="/updatePatient" method="post">
+                    <form action="/patient/<%= dbPatient._id %>/addData" method="post">
                         <div class="name mb">
                             <div class="fullname">
-                                <label for="">Full Name</label>
-                                <input value="<%= dbPatient.username %>" type="text" name="username" placeholder="Username" required <% if(user.role != "Records"){ %> readonly  <% } %> >
+                                <label for="">B.P: </label>
+                                <input type="text" name="BP" placeholder="Enter patient blood Presure">
                             </div>
                             <div class="dob">
-                                <label for="">Date of birth</label>
-                                <input value=<%= dbPatient.dob %>  type="date" name="dob" required <% if(user.role != "Records"){ %> readonly  <% } %>>
+                                <label for="">Weight: </label>
+                                <input type="text" name="weight" placeholder="Enter patients current weight">
                             </div>
                         </div>
-                        <div class="gen mb">
-                            <div class="gender">
-                                <label class="mbs" for="">Gender</label>
-                                <div class="g_ins">
-                                    Male <input value="male" type="radio" name="gender" <% if(dbPatient.gender == "male"){ %> checked <% } %>>
-                                Female <input value="female" type="radio" name="gender" <% if(dbPatient.gender == "female"){ %> checked <% } %> >
+                        <div class="others mb">
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <label for="">Pre-existing condition</label>
+                                    <input type="text" name="knownCondition" placeholder="Enter known patient condition">
+                                </div>
+                                <div class="two">
+                                    <label for="">Pre-existing condition</label>
+                                    <input type="text" name="knownCondition1" placeholder="Enter known patient condition">
                                 </div>
                             </div>
-                            <div class="role">
-                                <label for="">Relationship Status</label>
-                                <select name="maritalStatus" id="" required>
-                                    <% if(user.role != "Records"){ %> 
-                                        <option value="single"><%= dbPatient.maritalStatus %></option>
-                                    <% }else{ %>
-                                    <option value="<%= dbPatient.maritalStatus %>"><%= dbPatient.maritalStatus %></option>
-                                    <option value="Single">Single</option>
-                                    <option value="Married">Married</option>
-                                    <option value="Divorce">Divorced</option>
-                                    <option value="Widow">Widowed</option>
-                                    <% } %> 
-                                </select>
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <label for="">Pre-existing condition</label>
+                                    <input type="text" name="knownCondition2" placeholder="Enter known patient condition">
+                                </div>
+                                <div class="two">
+                                    <label for="">Pre-existing condition</label>
+                                    <input type="text" name="knownCondition3" placeholder="Enter known patient condition">
+                                </div>
+                            </div>
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <label for="">Other Neccessary Information</label>
+                                    <textarea name="info" id="" cols="70" rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="others mb">
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <label for="">Blood Type</label>
+                                    <input type="text" name="bloodtype" placeholder="Enter Patients blood type">
+                                </div>
+                                <div class="two">
+                                    <label for="">Geno-type</label>
+                                    <input type="text" name="genotype" placeholder="Enter Patients Geno-type">
+                                </div>
+                            </div>
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <div class="one mb">
+                                        <label for="">Data From Test</label>
+                                        <textarea name="testInfo" id="" cols="70" rows="5"></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="others">
                             <div class="flex mb">
                                 <div class="one mb">
-                                    <label for="">Contact</label>
-                                    <input value="<%= dbPatient.contact %>" type="text" name="contact" placeholder="Phone number" required <% if(user.role != "Records"){ %> readonly  <% } %>>
+                                    <label for="">Diagnosis</label>
+                                    <input type="text" name="diagnosis" placeholder="Enter Patient diagnosis">
                                 </div>
                                 <div class="two">
-                                    <label for="">Patient ID</label>
-                                    <input type="text" name="pID" placeholder="Assign unique ID" required value="<%= dbPatient.pID %>" readonly>
+                                    <label for="">Notes on diagnosis</label>
+                                    <textarea name="diagnosisNotes" id="" cols="50" rows="3"></textarea>
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one mb">
-                                    <label for="">Address Line</label>
-                                    <input value="<%= dbPatient.address %>" type="text" name="address" placeholder="Enter Address" required <% if(user.role != "Records"){ %> readonly  <% } %>>
-                                </div>
-                                <div class="one">
-                                    <label for="">Emergency contact</label>
-                                    <input value="<%= dbPatient.emergency %>" type="text" name="emergency" placeholder="Enter Contact" required <% if(user.role != "Records"){ %> readonly  <% } %>>
+                                    <div class="one mb">
+                                        <label for="">Prescription</label>
+                                        <textarea name="prescription" id="" cols="50" rows="5" placeholder="Prescribe medication"></textarea>
+                                    </div>
                                 </div>
                             </div>
-                            <% if(user.role == "Records"){ %>
-                            <div class="change">
-                                <input type="submit" value="Update" class="submit">
-                            </div>
-                            <% } %>
+                        </div>
+                        <div class="change umm">
+                            <input type="submit" value="Submit" class="submit">
                         </div>
                     </form>
                 </div>

@@ -271,3 +271,15 @@
     border-radius: 7px;
     box-shadow: 0px 0px 5px 0px gray;
 }
+.umm{
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+}
+.umm input{
+    background-image: linear-gradient(105deg, rgb(83, 235, 83), white);
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 15px;
+}

@@ -20,6 +20,7 @@ router.post("/login", async (req, res)=>{
         const Compared = compare(password, foundUser.password);
         if(Compared){
             req.session.user = foundUser;
+            console.log("logged in as "+ req.session.user.username);
             if(foundUser.role == "Admin")return res.render("dashboard", {user: foundUser});
             const patientDB = await Patients.find({});
             res.redirect("/searchPatient");
@@ -34,8 +35,8 @@ router.post("/login", async (req, res)=>{
 });
 
 router.get("/logOut", (req, res)=>{
+    console.log("logged out as " + req.session.user.username);
     req.session.user = {};
-    console.log("logged out");
     res.redirect("/")
 });
 
