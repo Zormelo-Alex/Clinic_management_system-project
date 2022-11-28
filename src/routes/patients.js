@@ -51,6 +51,13 @@ router.post("/updatePatient", notRecords, async (req, res)=>{
     return res.redirect("/searchPatient");
 });
 
+router.get("/patient/:id/addData", async (req, res)=>{
+    const id = req.params.id;
+    const user = req.session.user;
+    const findPatient = await Patients.findById(id);
+    res.render("addMedData", {user, dbPatient: findPatient});
+});
+
 
 
 

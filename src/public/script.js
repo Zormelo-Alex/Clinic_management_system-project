@@ -2,6 +2,7 @@ const view = document.querySelector(".view");
 const pass  = document.querySelector(".pass");
 const searchResult = document.querySelector(".results");
 
+
 view.addEventListener("click", ()=>{
     pass.setAttribute("type", "text");
 })
