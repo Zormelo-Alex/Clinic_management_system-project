@@ -43,6 +43,9 @@ const medDataShema = new mongoose.Schema({
     },
     prescription: {
         type: mongoose.SchemaTypes.String
+    },
+    bill: {
+        type: mongoose.SchemaTypes.String
     }
 });
 

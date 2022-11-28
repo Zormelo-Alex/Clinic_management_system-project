@@ -94,9 +94,11 @@
                         </div>
                     </form>
                 </div>
-                <div class="buttons">
+                <% if(user.role != "Records"){ %> 
+                <div class="buttons umm">
                     <a href="/patient/<%= dbPatient.id %>/addData">Add medical info</a>
                 </div>
+                <% } %> 
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const Users = require("../models/users");
+const { hashPassword, compare } = require("../utils/helpers");
 
 
 const notAdmin = (req, res, next) =>{
@@ -26,7 +27,7 @@ router.post("/addStaff", notAdmin, async(req, res)=>{
     const Password = hashPassword(req.body.password);
     req.body.password = Password;
     const userDB = await Users.findOne({$or: [{empID: req.body.empID}, {username: req.body.username}]});
-    console.log(userDB);
+    //console.log(userDB);
     if(userDB) return res.send("user with that Employee ID or username already exists!");
     Users.create(req.body, (err, newUser)=>{
         if(!err){
