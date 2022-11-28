@@ -97,6 +97,9 @@
                 <% if(user.role != "Records"){ %> 
                 <div class="buttons umm">
                     <a href="/patient/<%= dbPatient.id %>/addData">Add medical info</a>
+                    <% if(user.role == "Admin"){ %> 
+                    <a href="/patient/<%= dbPatient.id %>/allPatientData">View All patient Files</a>
+                    <% } %> 
                 </div>
                 <% } %> 
             </div>

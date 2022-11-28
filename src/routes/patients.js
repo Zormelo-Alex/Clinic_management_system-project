@@ -70,9 +70,10 @@ router.post("/patient/:id/addData", async (req, res)=>{
 router.get("/patient/:id/allPatientData", async (req, res)=>{
     const id = req.params.id;
     const user = req.session.user;
-    const patient = await Patients.findById(id);
+    const dbPatient = await Patients.findById(id);
     const pmedData = await medData.find({pID: id});
-    res.send(pmedData);
+    console.log(pmedData, dbPatient);
+    res.render("allPatientData", {dbPatient, pmedData, user});
 });
 
 
