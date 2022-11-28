@@ -56,6 +56,11 @@ router.get("/patient/:id/addData", async (req, res)=>{
     const id = req.params.id;
     const user = req.session.user;
     const findPatient = await Patients.findById(id);
+    const pmedData = await medData.find({pID: id});
+    if(pmedData.length > 0){
+        console.log("found something");
+        return res.render("addToPatientData", {user, pmedData, dbPatient: findPatient});
+    }
     res.render("addMedData", {user, dbPatient: findPatient});
 });
 
@@ -72,7 +77,6 @@ router.get("/patient/:id/allPatientData", async (req, res)=>{
     const user = req.session.user;
     const dbPatient = await Patients.findById(id);
     const pmedData = await medData.find({pID: id});
-    console.log(pmedData, dbPatient);
     res.render("allPatientData", {dbPatient, pmedData, user});
 });
 

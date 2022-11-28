@@ -1,0 +1,130 @@
+<%- include("./partials/header") %> 
+    <div class="flex_top">
+        <div class="nav">
+            <div class="top">
+                <img src="/resources/images/it2.jpg" alt="user_image">
+                <h1 class="name"><%= user.username %> </h1>
+                <h1 class="title"><%= user.role %> </h1>
+            </div>
+            <div class="bottom">
+                <ul><% if(user.role == "Admin"){ %> 
+                    <li class="sm">Staff Management</li>
+                    <li><a href="/addStaff">Add Staff</a></li>
+                    <li><a href="/searchStaff">Search Staff</a></li>
+                        <li><a href="/manageSchedule">Manage Schedule</a></li>
+                    <% } %> 
+                    <li class="sm">Patient Management</li>
+                    <li class="selected"><a href="/searchPatient">Search Patient</a></li>
+                    <% if(user.role == "Records"){ %> 
+                        <li><a href="/addPatient">Add Patient</a></li>
+                    <% } %> 
+                    <li><a href="/editInfo">Edit info</a></li>
+                </ul>
+                <div class="log">
+                    <a class="lo" href="/logOut">LogOut</a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="add_staff">
+                <h2 class="title">
+                    medical info - <%= dbPatient.username %> 
+                </h2>
+                <div class="form">
+                    <form action="/patient/<%= dbPatient._id %>/addData" method="post">
+                        <% if(user.role != "Finance"){ %> 
+                        <div class="name mb">
+                            <div class="fullname">
+                                <label for="">B.P: </label>
+                                <input type="text" name="BP" placeholder="Enter patient blood Presure" <% if(user.role != "OPD" || user.role == "Nurse"){ %>   <% } %> >
+                            </div>
+                            <div class="dob">
+                                <label for="">Weight: </label>
+                                <input type="text" name="weight" placeholder="Enter patients current weight" <% if(user.role != "OPD" || user.role == "Nurse"){ %>   <% } %> >
+                            </div>
+                        </div>
+                        <div class="others mb">
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <label for="">Pre-existing condition</label>
+                                    <input type="text" name="knownCondition" placeholder="Enter known patient condition" <% if(user.role != "OPD" || user.role == "Nurse"){ %>   <% } %> >
+                                </div>
+                                <div class="two">
+                                    <label for="">Pre-existing condition</label>
+                                    <input type="text" name="knownCondition1" placeholder="Enter known patient condition" <% if(user.role != "OPD" || user.role == "Nurse"){ %>   <% } %> >
+                                </div>
+                            </div>
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <label for="">Pre-existing condition</label>
+                                    <input type="text" name="knownCondition2" placeholder="Enter known patient condition" <% if(user.role != "OPD" || user.role == "Nurse"){ %>   <% } %> >
+                                </div>
+                                <div class="two">
+                                    <label for="">Pre-existing condition</label>
+                                    <input type="text" name="knownCondition3" placeholder="Enter known patient condition" <% if(user.role != "OPD" || user.role == "Nurse"){ %>  <% } %> >
+                                </div>
+                            </div>
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <label for="">Other Neccessary Information</label>
+                                    <textarea <% if(user.role != "OPD" || user.role == "Nurse"){ %>   <% } %> name="info" id="" cols="70" rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="others mb">
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <label for="">Blood Type</label>
+                                    <input type="text" name="bloodtype" placeholder="Enter Patients blood type" <% if(user.role != "Lab"){ %>   <% } %> >
+                                </div>
+                                <div class="two">
+                                    <label for="">Geno-type</label>
+                                    <input type="text" name="genotype" placeholder="Enter Patients Geno-type" <% if(user.role != "Lab"){ %>   <% } %> >
+                                </div>
+                            </div>
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <div class="one mb">
+                                        <label for="">Data From Test</label>
+                                        <textarea <% if(user.role != "Lab"){ %>   <% } %> name="testInfo" id="" cols="70" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %> 
+                        <div class="others">
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <label for="">Diagnosis</label>
+                                    <input type="text" name="diagnosis" placeholder="Enter Patient diagnosis" <% if(user.role != "Doctor"){ %>   <% } %> >
+                                </div>
+                                <div class="two">
+                                    <label for="">Notes on diagnosis</label>
+                                    <textarea <% if(user.role != "Doctor"){ %>   <% } %> name="diagnosisNotes" id="" cols="50" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="flex mb">
+                                <div class="one mb">
+                                    <div class="one mb">
+                                        <label for="">Prescription</label>
+                                        <textarea <% if(user.role != "Doctor" || user.role != "Pharmacist"){ %>   <% } %> name="prescription" id="" cols="50" rows="5" placeholder="Prescribe medication"></textarea>
+                                    </div>
+                                </div>
+                                <div class="one mb">
+                                    <div class="one mb">
+                                        <label for="">Total cost of care</label>
+                                        <textarea <% if(user.role != "Finance"){ %>  <% } %> name="bill" id="" cols="50" rows="5" placeholder="Enter total charges"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change umm">
+                            <input type="submit" value="Submit" class="submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<%- include("./partials/footer") %> 
