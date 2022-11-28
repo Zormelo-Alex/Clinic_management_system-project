@@ -35,33 +35,25 @@
                         <div class="name mb">
                             <div class="fullname">
                                 <label for="">Full Name</label>
-                                <input value="<%= user.username %>" type="text" name="username" placeholder="Username" required>
+                                <input value="<%= finduser.username %>" type="text" name="username" placeholder="Username" required>
                             </div>
                             <div class="dob">
                                 <label for="">Date of birth</label>
-                                <input type="date" name="dob" required value= <%= user.dob %>>
+                                <input type="date" name="dob" required value= <%= finduser.dob %>>
                             </div>
                         </div>
                         <div class="gen mb">
                             <div class="gender">
                                 <label class="mbs" for="">Gender</label>
                                 <div class="g_ins">
-                                    Male <input value="male" type="radio" name="gender" <% if(user.gender == "male"){ %> checked <% } %>>
-                                Female <input value="female" type="radio" name="gender" <% if(user.gender == "female"){ %> checked <% } %> >
+                                    Male <input value="male" type="radio" name="gender" <% if(finduser.gender == "male"){ %> checked <% } %>>
+                                Female <input value="female" type="radio" name="gender" <% if(finduser.gender == "female"){ %> checked <% } %> >
                                 </div>
                             </div>
                             <div class="role">
                                 <label for="">Select role</label>
                                 <select name="role" id="" required>
-                                    <% if(user.role == "Admin"){ %> 
-                                    <option value="Admin">Administrator</option>
-                                    <% }else{ %> 
-                                    <option value="Nurse">Nurse</option>
-                                    <option value="Doctor">Doctor</option>
-                                    <option value="Pharmacist">Pharmacist</option>
-                                    <option value="Finance">Finance</option>
-                                    <option value="OPD">OPD</option>
-                                    <% } %> 
+                                    <option value="<%= finduser.role %>"><%= finduser.role %> </option>
                                 </select>
                             </div>
                         </div>
@@ -69,47 +61,47 @@
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Nationality</label>
-                                    <input type="text" name="nationality" placeholder="Nationality" value="<%= user.nationality %>">
+                                    <input type="text" name="nationality" placeholder="Nationality" value="<%= finduser.nationality %>">
                                 </div>
                                 <div class="two">
                                     <label for="">Place of birth</label>
-                                    <input type="text" name="place" placeholder="Place of birth" value="<%= user.pob %>">
+                                    <input type="text" name="place" placeholder="Place of birth" value="<%= finduser.pob %>">
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Contact</label>
-                                    <input type="text" name="phone" placeholder="Phone number" value="<%= user.contact %>">
+                                    <input type="text" name="phone" placeholder="Phone number" value="<%= finduser.contact %>">
                                 </div>
                                 <div class="two">
                                     <label for="">Email</label>
-                                    <input type="email" name="email" placeholder="Enter Email" value="<%= user.email %>">
+                                    <input type="email" name="email" placeholder="Enter Email" value="<%= finduser.email %>">
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Address Line 1</label>
-                                    <input type="text" name="address1" placeholder="Enter Address" value="<%= user.address1 %>">
+                                    <input type="text" name="address1" placeholder="Enter Address" value="<%= finduser.address1 %>">
                                 </div>
                                 <div class="two">
                                     <label for="">Address Line 2</label>
-                                    <input type="text" name="address2" placeholder="Enter Address" value="<%= user.address2 %>">
+                                    <input type="text" name="address2" placeholder="Enter Address" value="<%= finduser.address2 %>">
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Emergency contact 1</label>
-                                    <input type="text" name="emc" placeholder="Enter Contact" value="<%= user.emergency1 %>">
+                                    <input type="text" name="emc" placeholder="Enter Contact" value="<%= finduser.emergency1 %>">
                                 </div>
                                 <div class="two">
                                     <label for="">Emergency contact 2</label>
-                                    <input type="text" name="emc2" placeholder="Enter Contact" value="<%= user.emergency2 %>">
+                                    <input type="text" name="emc2" placeholder="Enter Contact" value="<%= finduser.emergency2 %>">
                                 </div>
                             </div>
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Password</label>
-                                    <input type="password" name="password" placeholder="Enter New Password" required value="<%= user.password %>">
+                                    <input type="password" name="password" placeholder="Enter New Password" required value="<%= user.password %>" readonly>
                                 </div>
                                 <div class="two">
                                     <label for="">Employee ID</label>

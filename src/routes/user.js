@@ -5,12 +5,12 @@ const Users = require("../models/users");
 
 const notAdmin = (req, res, next) =>{
     if(req.session.user.role == "Admin") next();
-    else res.render("search-p", {user: req.session.user});
+    else res.redirect("/searchPatient");
 }
 
 router.use((req, res, next)=>{
     if(req.session.user.empID) next();
-    else res.send("cant");
+    else res.send("Login First!");
 });
 
 
@@ -40,9 +40,12 @@ router.post("/addStaff", notAdmin, async(req, res)=>{
 });
 
 router.post("/updateStaff", async(req, res)=>{
+    const user = req.session.user;
     const { empID } = req.body;
     const findUser = await Users.findOneAndUpdate({empID}, req.body);
-    return res.redirect("/searchStaff");
+    if(user.role == "Admin"){
+        return res.redirect("/searchStaff");
+    }else return res.redirect("back");
 });
 
 
@@ -67,9 +70,10 @@ router.get("/manageSchedule", notAdmin, (req, res)=>{
 });
 
 
-router.get("/editInfo", (req, res)=>{
+router.get("/editInfo", async (req, res)=>{
     const user = req.session.user;
-    res.render("edit", {user});
+    const finduser = await Users.findOne({empID: user.empID});
+    res.render("edit", {user, finduser});
 });
 
 router.get("/user/:id", async (req, res)=>{
