@@ -14,7 +14,6 @@ router.use((req, res, next)=>{
     else res.send("Login First!");
 });
 
-
 router.get("/addStaff", notAdmin, (req, res)=>{
     const user = req.session.user;
     res.render("dashboard", {user});

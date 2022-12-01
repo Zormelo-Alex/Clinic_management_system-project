@@ -31,36 +31,103 @@
                 <h2 class="title">
                     Patient Info
                 </h2>
-                <div class="data">
-                    <div class="name"><%= dbPatient.username %> </div>
-                    <div class="name"><%= dbPatient.dateAdded %> </div>
-                    <div class="name"><%= dbPatient.gender %> </div>
-                    <div class="name"><%= dbPatient.contact %> </div>
-                    <div class="name"><%= dbPatient.pID %> </div>
-                    <div class="name"><%= dbPatient.dob %> </div>
-                    <div class="name"><%= dbPatient.address %> </div>
-                    <div class="name"><%= dbPatient.emergency %> </div>
-                    <div class="name"><%= dbPatient.maritalStatus %> </div>
-                </div>
-                <% pmedData.forEach(data=>{  %>
-                    <div class="data">
-                        <div class="name"><%= data.pID %> </div>
-                        <div class="name"><%= data.BP %> </div>
-                        <div class="name"><%= data.weight %> </div>
-                        <div class="name"><%= data.knownCondition %> </div>
-                        <div class="name"><%= data.knownCondition1 %> </div>
-                        <div class="name"><%= data.knownCondition2 %> </div>
-                        <div class="name"><%= data.knownCondition3 %> </div>
-                        <div class="name"><%= data.info %> </div>
-                        <div class="name"><%= data.testInfo %> </div>
-                        <div class="name"><%= data.genotype %> </div>
-                        <div class="name"><%= data.bloodtype %> </div>
-                        <div class="name"><%= data.diagnosis %> </div>
-                        <div class="name"><%= data.diagnosisNotes %> </div>
-                        <div class="name"><%= data.prescription %> </div>
-                        <div class="name"><%= data.bill %> </div>
+                <div class="all">
+                    <div class="data group">
+                        <div class="i">
+                            <p>Patient Name: </p>
+                            <div class="name"><%= dbPatient.username %> </div>
+                        </div>
+                        <div class="i">
+                            <p>Date of first visit: </p>
+                            <div class="name"><%= dbPatient.dateAdded.toDateString(); %> </div>
+                        </div>
+                        <div class="i">
+                            <p>sex: </p>
+                            <div class="name"><%= dbPatient.gender %> </div>
+                        </div>
+                        <div class="i">
+                            <p>Patient Phone number: </p>
+                            <div class="name"><%= dbPatient.contact %> </div>
+                        </div>
+                        <div class="i">
+                            <p>Patient ID: </p>
+                            <div class="name"><%= dbPatient.pID %> </div>
+                        </div>
+                        <div class="i">
+                            <p>Date of birth: </p>
+                            <div class="name"><%= dbPatient.dob %> </div>
+                        </div>
+                        <div class="i">
+                            <p>Patient Home address: </p>
+                            <div class="name"><%= dbPatient.address %> </div>
+                        </div>
+                        <div class="i">
+                            <p>Patient emergency contact: </p>
+                            <div class="name"><%= dbPatient.emergency %> </div>
+                        </div>
+                        <div class="i">
+                            <p>Marital status: </p>
+                            <div class="name"><%= dbPatient.maritalStatus %> </div>
+                        </div>
                     </div>
-                 <%  }) %> 
+                    <% pmedData.forEach(data=>{  %>
+                        <div class="meddata group">
+                            <div class="i">
+                                <p>Blood pressure: </p>
+                                <div class="name"><%= data.BP %> </div>
+                            </div>
+                            <div class="i">
+                                <p>weight: </p>
+                                <div class="name"><%= data.weight %> </div>
+                            </div>
+                            <div class="i">
+                                <p>Patients known conditions: </p>
+                                <div class="name"><%= data.knownCondition %> </div>
+                            </div>
+                            <div class="i">
+                                <div class="name"><%= data.knownCondition1 %> </div>
+                            </div>
+                            <div class="i">
+                                <div class="name"><%= data.knownCondition2 %> </div>
+                            </div>
+                            <div class="i">
+                                <div class="name"><%= data.knownCondition3 %> </div>
+                            </div>
+                            <div class="i">
+                                <p>Info fron nurse: </p>
+                                <div class="name"><%= data.info %> </div>
+                            </div>
+                            <div class="i">
+                                <p>Patients genotype: </p>
+                                <div class="name"><%= data.genotype %> </div>
+                            </div>
+                            <div class="i">
+                                <p>Patients bloodtype: </p>
+                                <div class="name"><%= data.bloodtype %> </div>
+                            </div>
+                            <div class="i">
+                                <p>Info from lab: </p>
+                                <div class="name"><%= data.testInfo %> </div>
+                            </div>
+                            <div class="i">
+                                <p>diagnosis: </p>
+                                <div class="name"><%= data.diagnosis %> </div>
+                            </div>
+                            <div class="i">
+                                <p>doctors notes: </p>
+                                <div class="name"><%= data.diagnosisNotes %> </div>
+                            </div>
+                            <div class="i">
+                                <p>prescription: </p>
+                                <div class="name"><%= data.prescription %> </div>
+                            </div>
+                            <div class="i">
+                                <p>Total cost of treatment: </p>
+                                <div class="name"><%= data.bill %> </div>
+                            </div>
+                        </div>
+                     <%  }) %>
+                </div> 
             </div>
         </div>
     </div>

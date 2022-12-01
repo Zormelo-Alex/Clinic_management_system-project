@@ -286,3 +286,28 @@
     border-radius: 15px;
     padding: 9px 15px;
 }
+.main .add_staff .all{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main .add_staff .group{
+    background-color: rgb(226, 223, 223);
+    margin: 10px 0px;
+    padding: 15px;
+    border-radius: 7px;
+    width: fit-content;
+}
+.main .add_staff .group .i{
+    display: flex;
+    margin: 3px 5px;
+}
+.main .add_staff .group .i p{
+    text-transform: capitalize;
+    margin-right: 5px;
+}
+.main .add_staff .group .i .name{
+    font-weight: bold;
+    text-transform: capitalize;
+}

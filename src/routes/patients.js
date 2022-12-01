@@ -10,6 +10,11 @@ const notRecords = (req, res, next) =>{
     next();
 }
 
+const notAdmin = (req, res, next) =>{
+    if(req.session.user.role == "Admin") next();
+    else res.redirect("/searchPatient");
+}
+
 router.get("/addPatient", (req, res)=>{
     const user = req.session.user;
     res.render("addPatient", {user});
@@ -87,7 +92,7 @@ router.post("/patient/:id/updateData/:formid", async (req, res)=>{
     res.redirect("back");
 });
 
-router.get("/patient/:id/allPatientData", async (req, res)=>{
+router.get("/patient/:id/allPatientData", notAdmin, async (req, res)=>{
     const id = req.params.id;
     const user = req.session.user;
     const dbPatient = await Patients.findById(id);
