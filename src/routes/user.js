@@ -66,7 +66,8 @@ router.post("/getUser", async (req, res)=>{
 
 router.get("/manageSchedule", notAdmin, async (req, res)=>{
     const user = await Users.findOne({empID: req.session.user.empID});
-    res.render("manage", {user});
+    const allUsers = await Users.find({});
+    res.render("manage", {user, allUsers});
 });
 
 

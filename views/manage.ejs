@@ -33,13 +33,26 @@
                         <div class="searches mb">
                             <div class="sb">
                                 <button class="btn re">Re-shuffle</button>
-                                <button class="btn">Save</button>
+                                <button onclick="window.print()" class="btn">Print</button>
                             </div>
+                        </div>
+                        <div class="name table">
+                            <table border="1px">
+                                <th>Employee Name</th>
+                                <th>Role</th>
+                                <th>Employee ID</th>
+                                <% allUsers.forEach(staff=>{ %>
+                                <tr>
+                                    <td><%= staff.username %></td>
+                                    <td><%= staff.role %></td>
+                                    <td><%= staff.empID %></td>
+                                </tr>
+                            <% }) %>
+                            </table>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+    <%- include("./partials/footer") %>

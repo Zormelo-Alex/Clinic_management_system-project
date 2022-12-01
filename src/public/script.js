@@ -1,7 +1,13 @@
 const view = document.querySelector(".view");
 const pass  = document.querySelector(".pass");
 const searchResult = document.querySelector(".results");
+const reshuffle = document.querySelector(".re");
 
+
+reshuffle.addEventListener("click", (e)=>{
+    e.preventDefault()
+    console.log(allUsers);
+})
 
 view.addEventListener("click", ()=>{
     pass.setAttribute("type", "text");

@@ -311,3 +311,19 @@
     font-weight: bold;
     text-transform: capitalize;
 }
+.form form .table table{
+    width: 100%;
+}
+.form form .table table tr:nth-child(5){
+    border-bottom: 2px solid red;
+}
+@media print{
+    .table{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: aliceblue;
+    }
+}
