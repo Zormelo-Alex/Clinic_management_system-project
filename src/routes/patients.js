@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const Patients = require("../models/patients");
+const Users = require("../models/users");
 const medData = require("../models/medData");
 
 
@@ -15,8 +16,8 @@ const notAdmin = (req, res, next) =>{
     else res.redirect("/searchPatient");
 }
 
-router.get("/addPatient", (req, res)=>{
-    const user = req.session.user;
+router.get("/addPatient", async (req, res)=>{
+    const user = await Users.findOne({empID: req.session.user.empID});
     res.render("addPatient", {user});
 });
 
@@ -30,7 +31,7 @@ router.post("/addPatient", async (req, res)=>{
 });
 
 router.get("/searchPatient", async (req, res)=>{
-    const user = req.session.user;
+    const user = await Users.findOne({empID: req.session.user.empID});
     const allPatients = await Patients.find({});
     //console.log(allPatients);
     res.render("search-p", {user, allPatients})
@@ -46,7 +47,7 @@ router.post("/getPatient", async (req, res)=>{
 
 router.get("/patient/:id", async (req, res)=>{
     const id = req.params.id;
-    const user = req.session.user;
+    const user = await Users.findOne({empID: req.session.user.empID});
     const findPatient = await Patients.findById(id);
     res.render("viewPatient", {user, dbPatient: findPatient});
 });
@@ -59,7 +60,7 @@ router.post("/updatePatient", notRecords, async (req, res)=>{
 
 router.get("/patient/:id/addData", async (req, res)=>{
     const id = req.params.id;
-    const user = req.session.user;
+    const user = await Users.findOne({empID: req.session.user.empID});
     const findPatient = await Patients.findById(id);
     const pmedData = await medData.find({pID: id});
     if(pmedData.length > 0){
@@ -73,7 +74,7 @@ router.get("/patient/:id/addData", async (req, res)=>{
 
 router.post("/patient/:id/addData", async (req, res)=>{
     const id = req.params.id;
-    const user = req.session.user;
+    const user = await Users.findOne({empID: req.session.user.empID});
     req.body.pID = id;
     const newMedData = medData.create(req.body);
     res.redirect("back");
@@ -82,7 +83,7 @@ router.post("/patient/:id/addData", async (req, res)=>{
 router.post("/patient/:id/updateData/:formid", async (req, res)=>{
     const id = req.params.id;
     const formid = req.params.formid;
-    const user = req.session.user;
+    const user = await Users.findOne({empID: req.session.user.empID});
     req.body.pID = id;
     const pmedData = await medData.find({pID: id});
     if(pmedData.length > 0){
@@ -94,7 +95,7 @@ router.post("/patient/:id/updateData/:formid", async (req, res)=>{
 
 router.get("/patient/:id/allPatientData", notAdmin, async (req, res)=>{
     const id = req.params.id;
-    const user = req.session.user;
+    const user = await Users.findOne({empID: req.session.user.empID});
     const dbPatient = await Patients.findById(id);
     const pmedData = await medData.find({pID: id});
     res.render("allPatientData", {dbPatient, pmedData, user});

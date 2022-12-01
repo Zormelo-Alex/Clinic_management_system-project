@@ -14,8 +14,8 @@ router.use((req, res, next)=>{
     else res.send("Login First!");
 });
 
-router.get("/addStaff", notAdmin, (req, res)=>{
-    const user = req.session.user;
+router.get("/addStaff", notAdmin, async (req, res)=>{
+    const user = await Users.findOne({empID: req.session.user.empID});
     res.render("dashboard", {user});
 });
 
@@ -50,7 +50,7 @@ router.post("/updateStaff", async(req, res)=>{
 
 
 router.get("/searchStaff", notAdmin, async(req, res)=>{
-    const user = req.session.user;
+    const user = await Users.findOne({empID: req.session.user.empID});
     const allUsers = await Users.find({});
     //console.log(allUsers);
     res.render("search", {user, allUsers})
@@ -64,21 +64,21 @@ router.post("/getUser", async (req, res)=>{
     res.send({payload : search});
 });
 
-router.get("/manageSchedule", notAdmin, (req, res)=>{
-    const user = req.session.user;
+router.get("/manageSchedule", notAdmin, async (req, res)=>{
+    const user = await Users.findOne({empID: req.session.user.empID});
     res.render("manage", {user});
 });
 
 
 router.get("/editInfo", async (req, res)=>{
-    const user = req.session.user;
+    const user = await Users.findOne({empID: req.session.user.empID});
     const finduser = await Users.findOne({empID: user.empID});
     res.render("edit", {user, finduser});
 });
 
 router.get("/user/:id", async (req, res)=>{
     const id = req.params.id;
-    const user = req.session.user;
+    const user = await Users.findOne({empID: req.session.user.empID});
     const findUser = await Users.findById(id);
     res.render("editStaff", {user, dbUser: findUser});
 });
