@@ -2,11 +2,15 @@ const view = document.querySelector(".view");
 const pass  = document.querySelector(".pass");
 const searchResult = document.querySelector(".results");
 const reshuffle = document.querySelector(".re");
+const tr = document.querySelectorAll(".tr");
 
 
 reshuffle.addEventListener("click", (e)=>{
-    e.preventDefault()
-    console.log(allUsers);
+    e.preventDefault();
+    tr.forEach(t=>{
+        t.style.backgroundColor = "white";
+        t.style.color = "black";
+    })
 })
 
 view.addEventListener("click", ()=>{
