@@ -314,8 +314,12 @@
 .form form .table table{
     width: 100%;
 }
-.form form .table table tr:nth-child(5){
-    border-bottom: 2px solid red;
+.form form .table table tr{
+    padding: 5px;
+}
+.form form .table table tr:nth-child(2n){
+    background-color: rgb(58, 58, 58);
+    color: rgb(243, 235, 235);
 }
 @media print{
     .table{
