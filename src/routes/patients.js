@@ -72,6 +72,14 @@ router.get("/patient/:id/addData", async (req, res)=>{
     }
 });
 
+router.get("/patient/:id/addData.", async (req, res)=>{
+    const id = req.params.id;
+    const user = await Users.findOne({empID: req.session.user.empID});
+    const findPatient = await Patients.findById(id);
+    const pmedData = await medData.find({pID: id});
+        return res.render("addMedData2", {user, pmedData, dbPatient: findPatient});
+});
+
 router.post("/patient/:id/addData", async (req, res)=>{
     const id = req.params.id;
     const user = await Users.findOne({empID: req.session.user.empID});

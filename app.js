@@ -16,7 +16,7 @@ const {seed, addAdmin} = require("./seed");
 //addAdmin();
 
 
-mongoose.connect("mongodb://localhost:27017/cms").then(res=> console.log("db connected successfully...")).catch((err)=> console.log(err));
+mongoose.connect("mongodb://localhost:27017/cms").then(res=> console.log("db connected successfully...")).catch((err)=> console.log(err.message));
 
 app.use(express.static("src"));
 app.set("view engine", "ejs");
@@ -39,6 +39,6 @@ app.use(patient);
 
 
 
-app.listen("5000", ()=>{
-    console.log("server started on port 5000");
+app.listen("7000", ()=>{
+    console.log("server started on port 7000");
 })

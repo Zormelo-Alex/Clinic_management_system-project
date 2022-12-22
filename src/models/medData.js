@@ -46,6 +46,11 @@ const medDataShema = new mongoose.Schema({
     },
     bill: {
         type: mongoose.SchemaTypes.String
+    },
+    dateAdded: {
+        type: mongoose.SchemaTypes.Date,
+        default: new Date(),
+        required: true
     }
 });
 
