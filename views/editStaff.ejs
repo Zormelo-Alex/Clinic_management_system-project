@@ -2,7 +2,7 @@
     <div class="flex_top">
         <div class="nav">
             <div class="top">
-                <img src="/resources/images/it2.jpg" alt="user_image">
+                <img src="/resources/images/it2.jfif" alt="user_image">
                 <h1 class="name"><%= user.username %> </h1>
                 <h1 class="title"><%= user.role %> </h1>
             </div>
@@ -111,13 +111,18 @@
                                     <label for="">Password</label>
                                     <input type="password" name="password" placeholder="Enter New Password" required readonly value="<%= dbUser.password %>">
                                 </div>
-                                <div class="two">
+                                <div class="two mb">
                                     <label for="">Employee ID</label>
                                     <input type="text" name="empID" placeholder="Enter unique ID" readonly value="<%= dbUser.empID %>">
                                 </div>
                             </div>
-                            <div class="change">
-                                <input type="submit" value="update" class="submit">
+                            <div class="flex mb">
+                                <div class="change">
+                                    <input type="submit" value="update" class="submit">
+                                </div>
+                                <div class="change">
+                                    <a class="del" href="delete/<%= dbUser._id %>"> Delete User</a>
+                                </div>
                             </div>
                         </div>
                     </form>

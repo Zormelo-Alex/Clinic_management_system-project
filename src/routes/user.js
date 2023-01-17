@@ -67,6 +67,14 @@ router.post("/getUser", async (req, res)=>{
 router.get("/manageSchedule", notAdmin, async (req, res)=>{
     const user = await Users.findOne({empID: req.session.user.empID});
     const allUsers = await Users.find({});
+    allUsers.forEach(user=>{
+        const num = Math.random() * allUsers.length;
+        user.Num = num; 
+    });
+    function byNum(a, b){
+        return parseInt(a.Num) - parseInt(b.Num);
+    }
+    allUsers.sort(byNum);
     res.render("manage", {user, allUsers});
 });
 
@@ -84,9 +92,23 @@ router.get("/user/:id", async (req, res)=>{
     res.render("editStaff", {user, dbUser: findUser});
 });
 
-router.get("/changePassword", (req, res)=>{
-    res.render("changePass")
-});
+router.get("/user/delete/:id", async (req, res)=>{
+    const {id} = req.params;
+    const del  = await Users.findByIdAndRemove({_id: id}); 
+    console.log("you deleted ", del.username);
+    res.redirect("/searchStaff")
+
+})
+
+// router.get("/changePassword", (req, res)=>{
+//     res.render("change_password")
+// });
+// router.post("/updatePassword", (req, res)=>{
+//     console.log(req.body);
+//     const { old, newPass } = req.body;
+//     const co
+//     res.send("done");
+// });
 
 
 module.exports = router;

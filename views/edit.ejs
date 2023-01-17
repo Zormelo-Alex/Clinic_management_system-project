@@ -2,7 +2,7 @@
     <div class="flex_top">
         <div class="nav">
             <div class="top">
-                <img src="./resources/images/it2.jpg" alt="user_image">
+                <img src="./resources/images/it2.jfif" alt="user_image">
                 <h1 class="name"><%= user.username %> </h1>
                 <h1 class="title"><%= user.role %> </h1>
             </div>
@@ -100,15 +100,16 @@
                             </div>
                             <div class="flex mb">
                                 <div class="one">
-                                    <label for="">Password</label>
-                                    <input type="password" name="password" placeholder="Enter New Password" required value="<%= user.password %>" readonly>
+                                    <div class="change-password">
+                                        <!-- <a class="btn" href="/changePassword">change password</a> -->
+                                    </div>
                                 </div>
                                 <div class="two">
                                     <label for="">Employee ID</label>
                                     <input type="text" name="empID" placeholder="Enter unique ID" readonly value="<%= user.empID %>">
                                 </div>
                             </div>
-                            <div class="change">
+                            <div class="change hundred">
                                 <input type="submit" value="update" class="submit">
                             </div>
                         </div>

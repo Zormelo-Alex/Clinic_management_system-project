@@ -1,23 +1,17 @@
 const view = document.querySelector(".view");
 const pass  = document.querySelector(".pass");
 const searchResult = document.querySelector(".results");
-const reshuffle = document.querySelector(".re");
-const tr = document.querySelectorAll(".tr");
+const p = document.querySelector(".p");
 
 
-reshuffle.addEventListener("click", (e)=>{
-    e.preventDefault();
-    tr.forEach(t=>{
-        t.style.backgroundColor = "white";
-        t.style.color = "black";
-    })
-})
 
 view.addEventListener("click", ()=>{
     pass.setAttribute("type", "text");
 })
 
-
+p.addEventListener("click", (e)=>{
+    e.preventDefault();
+})
 //searching
 
 function sendData(e){
