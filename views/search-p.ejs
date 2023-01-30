@@ -60,6 +60,17 @@
                         <% }) %> 
                     </div>
                 </div>
+                <div class="list">
+                    <div class="cards">
+                        <% admits.forEach(admit=>{ %>
+                            <a href="/patient/<%= admit.id %>">
+                                <div class="card">
+                                    <div class="name mbs"> <b><%= admit.dateAdmitted %></b></div>
+                                </div>
+                            </a>
+                        <% }) %> 
+                    </div>
+                </div>
             </div>
         </div>
     </div>

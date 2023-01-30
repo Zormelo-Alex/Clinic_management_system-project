@@ -31,6 +31,21 @@
                     Patient info
                 </h2>
                 <div class="form">
+                    <% if(admit){ %>
+                        <div class="admitp">
+                            <% if(admit.dateDischarged){ %>
+                                <div class="ac"><div class="disc"></div>
+                            <span>Discharged</span></div>
+                            <% }else{ %>
+                            <div class="ac"><div class="ball"></div>
+                            <span>Admitted</span></div>
+                            <% } %> 
+                        <div>Date Addmited: <%= admit.dateAdmitted.toDateString() %> </div>
+                        <% if(admit.dateDischarged){ %>
+                            <div>Date Discharged: <%= admit.dateDischarged.toDateString() %> </div>
+                        <% } %> 
+                        </div>
+                    <% } %> 
                     <form action="/updatePatient" method="post">
                         <div class="name mb">
                             <div class="fullname">
@@ -95,6 +110,15 @@
                     </form>
                 </div>
                 <div class="buttons umm">
+                    <% if(admit){ %>
+                        <% if(!admit.dateDischarged){ %> 
+                        <% if(user.role == "OPD"){ %> 
+                            <a class="admit dis" href="/patient/<%= dbPatient.id %>/discharge">Discharge Patient</a>
+                            <% } %>
+                            <% } %> 
+                    <% }else{ %>
+                        <a class="admit" href="/patient/<%= dbPatient.id %>/admit">Admit Patient</a>
+                        <% } %>   
                     <% if(user.role != "Records" && user.role != "Admin"){ %> 
                     <a href="/patient/<%= dbPatient.id %>/addData">Add medical info</a>
                     <% } %> 

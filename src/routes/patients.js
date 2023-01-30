@@ -3,6 +3,7 @@ const router = Router();
 const Patients = require("../models/patients");
 const Users = require("../models/users");
 const medData = require("../models/medData");
+const Admit = require("../models/admit");
 
 
 const notRecords = (req, res, next) =>{
@@ -33,8 +34,9 @@ router.post("/addPatient", async (req, res)=>{
 router.get("/searchPatient", async (req, res)=>{
     const user = await Users.findOne({empID: req.session.user.empID});
     const allPatients = await Patients.find({});
+    const admitedPatients = await Admit.find({})
     //console.log(allPatients);
-    res.render("search-p", {user, allPatients})
+    res.render("search-p", {user, allPatients, admits: admitedPatients})
 });
 
 router.post("/getPatient", async (req, res)=>{
@@ -49,8 +51,27 @@ router.get("/patient/:id", async (req, res)=>{
     const id = req.params.id;
     const user = await Users.findOne({empID: req.session.user.empID});
     const findPatient = await Patients.findById(id);
-    res.render("viewPatient", {user, dbPatient: findPatient});
+    const admitedPatients = await Admit.findOne({pID: id})
+    //console.log(admitedPatients);
+    res.render("viewPatient", {user, dbPatient: findPatient, admit: admitedPatients});
 });
+
+router.get("/patient/:id/admit", async (req, res)=>{
+    const {id} = req.params;
+    const findPatient = await Patients.findById(id);
+    const admitPatient = await Admit.create({pID: id, dateAdmitted: Date()});
+    console.log(admitPatient);
+    res.redirect("/patient/"+id);
+})
+router.get("/patient/:id/discharge", async (req, res)=>{
+    const {id} = req.params;
+    const findPatient = await Patients.findById(id);
+    const dischargePatient = await Admit.findOneAndUpdate({pID: id}, 
+        {dateDischarged: Date()});
+    console.log("discharge");
+    console.log(dischargePatient);
+    res.redirect("back");
+})
 
 router.post("/updatePatient", notRecords, async (req, res)=>{
     const { pID } = req.body;
