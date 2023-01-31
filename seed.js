@@ -1,9 +1,24 @@
 const mongoose = require("mongoose");
 const Users = require("./src/models/users");
+const Patients = require("./src/models/patients");
+const medData = require("./src/models/medData");
+const Admit = require("./src/models/admit");
 const { hashPassword } = require("./src/utils/helpers");
 
 const seed = () =>{
     Users.remove({}, (data, err)=>{
+        if(!err) console.log(data);
+        console.log(err);
+    })
+    Patients.remove({}, (data, err)=>{
+        if(!err) console.log(data);
+        console.log(err);
+    })
+    medData.remove({}, (data, err)=>{
+        if(!err) console.log(data);
+        console.log(err);
+    })
+    Admit.remove({}, (data, err)=>{
         if(!err) console.log(data);
         console.log(err);
     })

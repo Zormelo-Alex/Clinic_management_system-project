@@ -15,7 +15,7 @@
                     <% } %> 
                     <li class="sm">Patient Management</li>
                     <li><a href="/searchPatient">Search Patient</a></li>
-                    <% if(user.role == "OPD"){ %> 
+                    <% if(user.role == "Records"){ %> 
                         <li><a href="/addPatient">Add Patient</a></li>
                     <% } %> 
                     <li class="selected"><a href="/editInfo">Edit info</a></li>
@@ -71,7 +71,7 @@
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Contact</label>
-                                    <input type="text" name="phone" placeholder="Phone number" value="<%= finduser.contact %>">
+                                    <input type="tel" pattern="[0-9]{10}" name="phone" placeholder="Phone number" value="<%= finduser.contact %>">
                                 </div>
                                 <div class="two">
                                     <label for="">Email</label>
@@ -91,11 +91,11 @@
                             <div class="flex mb">
                                 <div class="one">
                                     <label for="">Emergency contact 1</label>
-                                    <input type="text" name="emc" placeholder="Enter Contact" value="<%= finduser.emergency1 %>">
+                                    <input type="tel" pattern="[0-9]{10}" name="emc" placeholder="Enter Contact" value="<%= finduser.emergency1 %>">
                                 </div>
                                 <div class="two">
                                     <label for="">Emergency contact 2</label>
-                                    <input type="text" name="emc2" placeholder="Enter Contact" value="<%= finduser.emergency2 %>">
+                                    <input type="tel" pattern="[0-9]{10}" name="emc2" placeholder="Enter Contact" value="<%= finduser.emergency2 %>">
                                 </div>
                             </div>
                             <div class="flex mb">

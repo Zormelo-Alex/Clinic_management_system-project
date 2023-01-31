@@ -43,6 +43,9 @@ router.post("/updateStaff", async(req, res)=>{
     const user = req.session.user;
     const { empID } = req.body;
     const findUser = await Users.findOneAndUpdate({empID}, req.body);
+    if(findUser){
+        console.log("```User updated info```");
+    }
     if(user.role == "Admin"){
         return res.redirect("/searchStaff");
     }else return res.redirect("back");

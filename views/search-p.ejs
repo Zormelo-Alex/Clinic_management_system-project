@@ -48,24 +48,24 @@
                     <div class="cards">
                         <% allPatients.forEach(Patient=>{ %>
                             <a href="/patient/<%= Patient.id %>">
-                                <div class="card">
+                                <div class="card admitp">
+                                    <% admits.forEach(admit=>{ %>
+                                        <% if(Patient.id == admit.pID){ %> 
+                                            <% if(admit.dateDischarged){ %>
+                                                <div class="ac"><div class="disc"></div>
+                                            </div>
+                                            <% }else{ %>
+                                            <div class="ac"><div class="ball"></div>
+                                            </div>
+                                            <% } %> 
+                                    <% } %> 
+                                    <% }) %> 
                                     <div class="name mbs"> <b><%= Patient.username %></b></div>
                                     <hr>
                                     <div class="role">First Visit: <b><%= Patient.dateAdded.toDateString(); %></b></div>
                                     <div class="id">Patient ID: <b><%= Patient.pID %></b> </div>
                                     <div class="contact"> Contact: <b><%= Patient.contact %></b></div>
                                     <div class="address"> Address: <b><%= Patient.address %></b></div>
-                                </div>
-                            </a>
-                        <% }) %> 
-                    </div>
-                </div>
-                <div class="list">
-                    <div class="cards">
-                        <% admits.forEach(admit=>{ %>
-                            <a href="/patient/<%= admit.id %>">
-                                <div class="card">
-                                    <div class="name mbs"> <b><%= admit.dateAdmitted %></b></div>
                                 </div>
                             </a>
                         <% }) %> 

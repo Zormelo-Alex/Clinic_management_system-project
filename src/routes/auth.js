@@ -18,7 +18,7 @@ router.post("/login", async (req, res)=>{
     if(foundUser){
         const Compared = compare(password, foundUser.password);
         if(Compared){
-            req.session.user = foundUser;
+            req.session.user = await foundUser;
             console.log("logged in as "+ req.session.user.username);
             if(foundUser.role == "Admin")return res.render("dashboard", {user: foundUser});
             res.redirect("/searchPatient");

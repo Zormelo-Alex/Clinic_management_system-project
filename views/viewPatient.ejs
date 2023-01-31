@@ -84,7 +84,7 @@
                             <div class="flex mb">
                                 <div class="one mb">
                                     <label for="">Contact</label>
-                                    <input value="<%= dbPatient.contact %>" type="text" name="contact" placeholder="Phone number" required <% if(user.role != "Records"){ %> readonly  <% } %>>
+                                    <input value="<%= dbPatient.contact %>" type="tel" pattern="[0-9]{10}" name="contact" placeholder="Phone number" required <% if(user.role != "Records"){ %> readonly  <% } %>>
                                 </div>
                                 <div class="two">
                                     <label for="">Patient ID</label>
@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="one">
                                     <label for="">Emergency contact</label>
-                                    <input value="<%= dbPatient.emergency %>" type="text" name="emergency" placeholder="Enter Contact" required <% if(user.role != "Records"){ %> readonly  <% } %>>
+                                    <input value="<%= dbPatient.emergency %>" type="tel" pattern="[0-9]{10}" name="emergency" placeholder="Enter Contact" required <% if(user.role != "Records"){ %> readonly  <% } %>>
                                 </div>
                             </div>
                             <% if(user.role == "Records"){ %>

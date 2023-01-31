@@ -23,11 +23,14 @@ router.get("/addPatient", async (req, res)=>{
 });
 
 router.post("/addPatient", async (req, res)=>{
-    console.log(req.body);
+    //console.log(req.body);
     const patientDB = await Patients.findOne({pID: req.body.pID});
-    console.log(patientDB);
+    //console.log(patientDB);
     if(patientDB) return res.send("Patient with that ID already exists!");
     const newPatient = Patients.create(req.body);
+    if(newPatient){
+        console.log("New Patient added to the database");
+    }
     res.redirect("/searchPatient");
 });
 
@@ -36,6 +39,7 @@ router.get("/searchPatient", async (req, res)=>{
     const allPatients = await Patients.find({});
     const admitedPatients = await Admit.find({})
     //console.log(allPatients);
+    //console.log(admitedPatients);
     res.render("search-p", {user, allPatients, admits: admitedPatients})
 });
 
