@@ -47,7 +47,7 @@
 <li>Amogu Emmanuel Ugbaja - Dev and Tech</li>
 <li>Nkrow Jerome</li>
 <li>Normanyo-Grives Etornam - Project lead</li>
-<li>Collins</li>
+<li>Doxa Collins</li>
 <li>Prince</li>
 <li>Kumah Festus</li>
 </ul>
