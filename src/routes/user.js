@@ -31,6 +31,7 @@ router.post("/addStaff", notAdmin, async(req, res)=>{
     Users.create(req.body, (err, newUser)=>{
         if(!err){
             //console.log(newUser);
+            console.log("New staff added```");
             res.redirect('/addStaff');
         }else{
             console.log(err);

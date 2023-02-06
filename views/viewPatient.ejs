@@ -117,7 +117,9 @@
                             <% } %>
                             <% } %> 
                     <% }else{ %>
-                        <a class="admit" href="/patient/<%= dbPatient.id %>/admit">Admit Patient</a>
+                        <% if(user.role == "OPD"){ %> 
+                            <a class="admit" href="/patient/<%= dbPatient.id %>/admit">Admit Patient</a>
+                            <% } %>
                         <% } %>   
                     <% if(user.role != "Records" && user.role != "Admin"){ %> 
                     <a href="/patient/<%= dbPatient.id %>/addData">Add medical info</a>

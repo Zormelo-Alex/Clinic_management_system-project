@@ -39,38 +39,38 @@
                                 <div class="name mb">
                                     <div class="fullname">
                                         <label for="">B.P: </label>
-                                        <input value="<%= data.BP %>" type="text" name="BP" placeholder="Enter patient blood Presure" <% if(user.role != "OPD" || user.role == "Nurse"){ %> readonly  <% } %> >
+                                        <input value="<%= data.BP %>" type="text" name="BP" placeholder="Enter patient blood Presure" <% if(user.role != "OPD" && user.role != "Nurse"){ %> readonly  <% } %> >
                                     </div>
                                     <div class="dob">
                                         <label for="">Weight: </label>
-                                        <input value="<%= data.weight %>" type="text" name="weight" placeholder="Enter patients current weight" <% if(user.role != "OPD" || user.role == "Nurse"){ %> readonly  <% } %> >
+                                        <input value="<%= data.weight %>" type="text" name="weight" placeholder="Enter patients current weight" <% if(user.role != "OPD" && user.role != "Nurse"){ %> readonly  <% } %> >
                                     </div>
                                 </div>
                                 <div class="others mb">
                                     <div class="flex mb">
                                         <div class="one mb">
                                             <label for="">Pre-existing condition</label>
-                                            <input value="<%= data.knownCondition %>" type="text" name="knownCondition" placeholder="Enter known patient condition" <% if(user.role != "OPD" || user.role == "Nurse"){ %>  readonly <% } %> >
+                                            <input value="<%= data.knownCondition %>" type="text" name="knownCondition" placeholder="Enter known patient condition" <% if(user.role != "OPD" && user.role != "Nurse"){ %>  readonly <% } %> >
                                         </div>
                                         <div class="two">
                                             <label for="">Pre-existing condition</label>
-                                            <input value="<%= data.knownCondition1 %>" type="text" name="knownCondition1" placeholder="Enter known patient condition" <% if(user.role != "OPD" || user.role == "Nurse"){ %>  readonly <% } %> >
+                                            <input value="<%= data.knownCondition1 %>" type="text" name="knownCondition1" placeholder="Enter known patient condition" <% if(user.role != "OPD" && user.role != "Nurse"){ %>  readonly <% } %> >
                                         </div>
                                     </div>
                                     <div class="flex mb">
                                         <div class="one mb">
                                             <label for="">Pre-existing condition</label>
-                                            <input  value="<%= data.knownCondition2 %>" type="text" name="knownCondition2" placeholder="Enter known patient condition" <% if(user.role != "OPD" || user.role == "Nurse"){ %> readonly  <% } %> >
+                                            <input  value="<%= data.knownCondition2 %>" type="text" name="knownCondition2" placeholder="Enter known patient condition" <% if(user.role != "OPD" && user.role != "Nurse"){ %> readonly  <% } %> >
                                         </div>
                                         <div class="two">
                                             <label for="">Pre-existing condition</label>
-                                            <input  value="<%= data.knownCondition3 %>" type="text" name="knownCondition3" placeholder="Enter known patient condition" <% if(user.role != "OPD" || user.role == "Nurse"){ %> readonly <% } %> >
+                                            <input  value="<%= data.knownCondition3 %>" type="text" name="knownCondition3" placeholder="Enter known patient condition" <% if(user.role != "OPD" && user.role != "Nurse"){ %> readonly <% } %> >
                                         </div>
                                     </div>
                                     <div class="flex mb">
                                         <div class="one mb">
                                             <label for="">Other Neccessary Information</label>
-                                            <input  value="<%= data.info %>" <% if(user.role != "OPD" || user.role == "Nurse"){ %> readonly <% } %> name="info" >
+                                            <input  value="<%= data.info %>" <% if(user.role != "OPD" && user.role != "Nurse"){ %> readonly <% } %> name="info" >
                                         </div>
                                     </div>
                                 </div>

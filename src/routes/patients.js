@@ -64,7 +64,10 @@ router.get("/patient/:id/admit", async (req, res)=>{
     const {id} = req.params;
     const findPatient = await Patients.findById(id);
     const admitPatient = await Admit.create({pID: id, dateAdmitted: Date()});
-    console.log(admitPatient);
+    if(admitPatient){
+        console.log("patient admited suc```")
+    }
+    //console.log(admitPatient);
     res.redirect("/patient/"+id);
 })
 router.get("/patient/:id/discharge", async (req, res)=>{
@@ -72,8 +75,8 @@ router.get("/patient/:id/discharge", async (req, res)=>{
     const findPatient = await Patients.findById(id);
     const dischargePatient = await Admit.findOneAndUpdate({pID: id}, 
         {dateDischarged: Date()});
-    console.log("discharge");
-    console.log(dischargePatient);
+    console.log("Patient discharged suc```");
+    //console.log(dischargePatient);
     res.redirect("back");
 })
 
